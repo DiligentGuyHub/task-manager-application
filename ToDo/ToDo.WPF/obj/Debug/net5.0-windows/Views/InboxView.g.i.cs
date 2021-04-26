@@ -53,7 +53,7 @@ namespace ToDo.WPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ToDo.WPF;component/views/inboxview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ToDo.WPF;V1.0.0.0;component/views/inboxview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\InboxView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
