@@ -8,11 +8,11 @@ namespace ToDo.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        public ExchangeRateViewModel ExchangeRateViewModel { get; set; }
+        public ExchangeRateListingViewModel ExchangeRateListingViewModel { get; set; }
 
-        public HomeViewModel(ExchangeRateViewModel exchangeRateViewModel)
+        public HomeViewModel(ExchangeRateListingViewModel exchangeRateViewModel)
         {
-            ExchangeRateViewModel = exchangeRateViewModel;
+            ExchangeRateListingViewModel = exchangeRateViewModel;
         }
     }
 }

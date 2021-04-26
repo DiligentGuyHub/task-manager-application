@@ -21,6 +21,7 @@ namespace ToDo.API.Services
                 string jsonResponse = await response.Content.ReadAsStringAsync();
 
                 Rate rate = JsonConvert.DeserializeObject<Rate>(jsonResponse);
+                rate.Type = rateType;
                 return rate;
             }
         }

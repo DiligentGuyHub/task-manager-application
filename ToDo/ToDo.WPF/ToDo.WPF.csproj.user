@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\ExchangeRateCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ExchangeRateListing.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +33,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\ExchangeRateCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ExchangeRateListing.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\NavigationBar.xaml">
       <SubType>Designer</SubType>
     </Page>

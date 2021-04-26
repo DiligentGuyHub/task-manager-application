@@ -33,7 +33,7 @@ namespace ToDo.WPF.Commands
                 switch (viewType)
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel(ExchangeRateViewModel.LoadExchangeIndexViewModel(new ExchangeRateService()));
+                        _navigator.CurrentViewModel = new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(new ExchangeRateService()));
                         break;
                     case ViewType.Inbox:
                         _navigator.CurrentViewModel = new InboxViewModel();

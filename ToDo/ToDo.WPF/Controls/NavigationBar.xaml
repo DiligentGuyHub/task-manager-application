@@ -4,14 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDo.WPF.Controls"
-             xmlns:nav="clr-namespace:ToDo.WPF.State.Navigators"
+             xmlns:viewmodels="clr-namespace:ToDo.WPF.ViewModels"
+             xmlns:converters="clr-namespace:ToDo.WPF.Converters"
+             xmlns:nav="clr-namespace:ToDo.WPF.State.Navigators" d:DataContext="{d:DesignInstance Type=nav:Navigator}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Padding="10" FontSize="24" Text="Get Done" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushSecondary_1}"/>
@@ -31,7 +35,9 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
             <!-- to declare where this command is defined we should go to app.xaml.cs and window.DataContext = MainViewModel() -->
-            <RadioButton Grid.Row="0" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
+            <RadioButton Grid.Row="0" Content="Home" 
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:HomeViewModel}}" 
+                         Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
             <RadioButton Grid.Row="1" Content="Inbox" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Inbox}"/>
             <RadioButton Grid.Row="2" Content="Today" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Today}"/>
             <RadioButton Grid.Row="3" Content="Week" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Week}"/>

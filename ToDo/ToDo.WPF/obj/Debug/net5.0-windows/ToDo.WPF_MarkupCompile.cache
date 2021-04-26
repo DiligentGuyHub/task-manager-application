@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\longr\OneDrive\Документы\C#\WPF\ToDo\ToDo.WPF\App.xaml
-9793883348
+11580199649
 
-21-785110096
+2489512599
 217-328364016
-Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\HomeView.xaml;Views\InboxView.xaml;Views\MonthView.xaml;Views\TodayView.xaml;Views\WeekView.xaml;
+Controls\ExchangeRateCard.xaml;Controls\ExchangeRateListing.xaml;Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\HomeView.xaml;Views\InboxView.xaml;Views\MonthView.xaml;Views\TodayView.xaml;Views\WeekView.xaml;
 
 False
 

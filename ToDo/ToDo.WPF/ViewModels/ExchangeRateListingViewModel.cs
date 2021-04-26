@@ -5,23 +5,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDo.Domain.Services;
+using ToDo.WPF.Models;
 
 namespace ToDo.WPF.ViewModels
 {
-    public class ExchangeRateViewModel
+    public class ExchangeRateListingViewModel : ViewModelBase
     {
         private readonly IExchangeRateService _exchangeRateService;
-        public Rate USD { get; set; }
-        public Rate EUR { get; set; }
+        private Rate _usd;
+        public Rate USD 
+        { 
+            get
+            {
+                return _usd;
+            }
+            set
+            {
+                _usd = value;
+                OnPropertyChanged(nameof(USD));
+            }
+        }
+        private Rate _eur;
+        public Rate EUR
+        {
+            get
+            {
+                return _eur;
+            }
+            set
+            {
+                _eur = value;
+                OnPropertyChanged(nameof(EUR));
+            }
+        }
 
-        public ExchangeRateViewModel(IExchangeRateService exchangeRateService)
+        public ExchangeRateListingViewModel(IExchangeRateService exchangeRateService)
         {
             _exchangeRateService = exchangeRateService;
         }
 
-        public static ExchangeRateViewModel LoadExchangeIndexViewModel(IExchangeRateService exchangeRateService)
+        public static ExchangeRateListingViewModel LoadExchangeIndexViewModel(IExchangeRateService exchangeRateService)
         {
-            ExchangeRateViewModel exchangeRateViewModel = new ExchangeRateViewModel(exchangeRateService);
+            ExchangeRateListingViewModel exchangeRateViewModel = new ExchangeRateListingViewModel(exchangeRateService);
             // everything is fine :D
             exchangeRateViewModel.LoadExchangeIndexes();
             return exchangeRateViewModel;

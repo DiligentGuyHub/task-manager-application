@@ -20,6 +20,7 @@ namespace NbrbAPI.Models
         public int Cur_Scale { get; set; }
         public string Cur_Name { get; set; }
         public decimal? Cur_OfficialRate { get; set; }
+        public RateType Type { get; set; }
     }
 
     public class RateShort
