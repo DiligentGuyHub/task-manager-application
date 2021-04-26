@@ -5371,11 +5371,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
+      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
       "projectName": "ToDo.WPF",
-      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
+      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
       "packagesPath": "C:\\Users\\longr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.WPF\\obj\\",
+      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.WPF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\longr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5392,14 +5392,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.API\\ToDo.API.csproj": {
-              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.API\\ToDo.API.csproj"
+            "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.API\\ToDo.API.csproj": {
+              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.API\\ToDo.API.csproj"
             },
-            "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj": {
-              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj"
+            "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj": {
+              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj"
             },
-            "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj": {
-              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj"
+            "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj"
             }
           }
         }

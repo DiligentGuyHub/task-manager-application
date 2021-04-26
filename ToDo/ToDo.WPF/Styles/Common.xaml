@@ -4,10 +4,16 @@
     <Color x:Key="ColorPrimary_1">#243038</Color>
     <Color x:Key="ColorPrimary_2">#5A778C</Color>
     <Color x:Key="ColorPrimary_3">#638EAD</Color>
+    <Color x:Key="ColorSecondary_1">white</Color>
+    <Color x:Key="ColorSecondary_2">#505D66</Color>
+    
     
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushPrimary_1" Color="{StaticResource ColorPrimary_1}"/>
     <SolidColorBrush x:Key="BrushPrimary_2" Color="{StaticResource ColorPrimary_2}"/>
     <SolidColorBrush x:Key="BrushPrimary_3" Color="{StaticResource ColorPrimary_3}"/>
+    <SolidColorBrush x:Key="BrushSecondary_1" Color="{StaticResource ColorSecondary_1}"/>
+    <SolidColorBrush x:Key="BrushSecondary_2" Color="{StaticResource ColorSecondary_2}"/>
+    
     
 </ResourceDictionary>

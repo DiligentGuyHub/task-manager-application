@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj",
       "projectName": "ToDo.Domain",
-      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj",
+      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj",
       "packagesPath": "C:\\Users\\longr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\obj\\",
+      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\longr\\AppData\\Roaming\\NuGet\\NuGet.Config",

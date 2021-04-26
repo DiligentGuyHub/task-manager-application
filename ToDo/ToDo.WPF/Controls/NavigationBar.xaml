@@ -10,13 +10,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="ToDo Application" Background="{StaticResource BrushPrimary_1}"/>
-        <TextBlock Grid.Row="1" Text="Account stack panel" Background="{StaticResource BrushPrimary_1}"/>
+        <TextBlock Grid.Row="0" Padding="10" FontSize="24" Text="Get Done" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushSecondary_1}"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Padding="10" Text="Account stack panel" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushSecondary_1}"/>
+        </StackPanel>
+        <!--RenderOptions.EdgeMode="Aliased"-->
         <Grid Grid.Row="2" Background="{StaticResource BrushPrimary_2}">
+            <!--<Grid.Resources>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource NavButton}"/>
+            </Grid.Resources>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
@@ -25,27 +31,12 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
             <!-- to declare where this command is defined we should go to app.xaml.cs and window.DataContext = MainViewModel() -->
-            <RadioButton Grid.Row="0" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}">
-                <TextBlock Grid.Row="1" Text="Home"/>
-            </RadioButton>
-            <RadioButton Grid.Row="1" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Inbox}">
-                <TextBlock Grid.Row="1" Text="Inbox"/>
-            </RadioButton>
-            <RadioButton Grid.Row="2" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Today}">
-                <TextBlock Grid.Row="1" Text="Today"/>
-            </RadioButton>
-            <RadioButton Grid.Row="3" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Week}">
-                <TextBlock Grid.Row="1" Text="Week"/>
-            </RadioButton>
-            <RadioButton Grid.Row="4" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Month}">
-                <TextBlock Grid.Row="1" Text="Month"/>
-            </RadioButton>
+            <RadioButton Grid.Row="0" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
+            <RadioButton Grid.Row="1" Content="Inbox" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Inbox}"/>
+            <RadioButton Grid.Row="2" Content="Today" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Today}"/>
+            <RadioButton Grid.Row="3" Content="Week" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Week}"/>
+            <RadioButton Grid.Row="4" Content="Month" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Month}"/>
         </Grid>
-        <RadioButton Grid.Row="6">
-            <TextBlock Grid.Row="1" Text="Categories"/>
-        </RadioButton>
-        <RadioButton Grid.Row="7">
-            <TextBlock Grid.Row="1" Text="Other stuff"/>
-        </RadioButton>
+        
     </Grid>
 </UserControl>

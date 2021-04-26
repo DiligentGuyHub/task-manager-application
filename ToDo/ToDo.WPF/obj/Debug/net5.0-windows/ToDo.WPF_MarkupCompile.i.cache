@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\longr\OneDrive\Документы\III\Object Oriented Programming\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\
+C:\Users\longr\OneDrive\Документы\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\
 ToDo.WPF
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\longr\OneDrive\Документы\III\Object Oriented Programming\ToDo\ToDo.WPF\App.xaml
-8-1809619604
+C:\Users\longr\OneDrive\Документы\C#\WPF\ToDo\ToDo.WPF\App.xaml
+9793883348
 
 23-1056331803
-217-134760480
-Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Views\HomeView.xaml;Views\InboxView.xaml;Views\MonthView.xaml;Views\TodayView.xaml;Views\WeekView.xaml;
+217-328364016
+Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\HomeView.xaml;Views\InboxView.xaml;Views\MonthView.xaml;Views\TodayView.xaml;Views\WeekView.xaml;
 
-False
+True
 

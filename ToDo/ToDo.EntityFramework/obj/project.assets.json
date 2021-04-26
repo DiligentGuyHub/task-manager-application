@@ -5427,11 +5427,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
+      "projectUniqueName": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
       "projectName": "ToDo.EntityFramework",
-      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
+      "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
       "packagesPath": "C:\\Users\\longr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.EntityFramework\\obj\\",
+      "outputPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\longr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5448,8 +5448,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj": {
-              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj"
+            "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj": {
+              "projectPath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.Domain\\ToDo.Domain.csproj"
             }
           }
         }

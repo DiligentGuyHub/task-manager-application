@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w+c4jPxD7Xg4/dBMVWPF8AmKN9cjN2azszpHhJ5tc/NyVcZ4dlJXVrO+jNqip53KTE7epV797AWm5zUBdMXyWg==",
+  "dgSpecHash": "knHA3EerxwV4kSgLQQNK8N0UQKPCsNqtgRt7Qe9K8dTt+3aSJRSjEqHg4V/1yBN2TSbQ7gHtFtLuSGkwdnh66A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Документы\\III\\Object Oriented Programming\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
+  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\longr\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
