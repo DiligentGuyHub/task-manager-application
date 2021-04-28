@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ToDo.Domain.Models
 {
-    public class File : DomainBase
+    public class AttachedImage : DomainBase
     {
-        public string TaskId { get; set; }
-        public File _File { get; set; }
-
+        public byte[] Image { get; set; }
     }
 }

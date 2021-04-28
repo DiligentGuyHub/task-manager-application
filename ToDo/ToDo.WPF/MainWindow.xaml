@@ -8,13 +8,16 @@
         xmlns:viewmodels="clr-namespace:ToDo.WPF.ViewModels"
         xmlns:nav="clr-namespace:ToDo.WPF.State.Navigators"
         mc:Ignorable="d"
-        Title="GetDone" Height="450" Width="800">
+        Title="GetDone" 
+        Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <controls:NavigationBar DataContext="{Binding Navigator}"/>
-        <ContentControl Grid.Column="1" Content="{Binding Navigator.CurrentViewModel}"/>
+        <ContentControl Grid.Column="1" 
+                        HorizontalAlignment="Stretch"
+                        Content="{Binding Navigator.CurrentViewModel}"/>
     </Grid>
 </Window>

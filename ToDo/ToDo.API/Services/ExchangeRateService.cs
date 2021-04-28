@@ -35,7 +35,7 @@ namespace ToDo.API.Services
                 case RateType.EUR:
                     return "292";
                 default:
-                    return "145";
+                    throw new Exception("Exchange rate for given is not defined");
             }
         }
     }

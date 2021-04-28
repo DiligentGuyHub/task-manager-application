@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dhJDDne3jT5jv701nP17IT/h6W6pKZAh30WpPDp8I1LlRwL4dIw1P9DOTT1q55CCOrlAALbM+66Qaz861UztCA==",
+  "dgSpecHash": "GHQtIaNi1fpl1oSY9qOtqbRef5dUVwHwfULwGOTAFjJe1JLyIffxXbxr5531bcnRwkuCbzi6ITGjtyXWM+BVpA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
+  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Documents\\C#\\WPF\\ToDo\\ToDo.EntityFramework\\ToDo.EntityFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\longr\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

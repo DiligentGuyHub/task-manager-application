@@ -19,7 +19,47 @@ namespace ToDo.EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ToDo.Domain.Models.Category", b =>
+            modelBuilder.Entity("ToDo.Domain.Models.AttachedFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("File")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("Files");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.AttachedImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,73 +69,14 @@ namespace ToDo.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TaskId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("TaskId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("ToDo.Domain.Models.File", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("TaskId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("_FileId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("_FileId");
-
-                    b.ToTable("Files");
-                });
-
-            modelBuilder.Entity("ToDo.Domain.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("TaskId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("_ImageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("_ImageId");
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("ToDo.Domain.Models.SubTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Header")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaskId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isCompleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubTasks");
                 });
 
             modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
@@ -104,6 +85,9 @@ namespace ToDo.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
@@ -117,13 +101,17 @@ namespace ToDo.EntityFramework.Migrations
                     b.Property<string>("Priority")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("TaskId")
                         .HasColumnType("int");
 
                     b.Property<bool>("isCompleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("TaskId");
 
                     b.ToTable("Tasks");
                 });
@@ -152,22 +140,54 @@ namespace ToDo.EntityFramework.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ToDo.Domain.Models.File", b =>
+            modelBuilder.Entity("ToDo.Domain.Models.AttachedFile", b =>
                 {
-                    b.HasOne("ToDo.Domain.Models.File", "_File")
-                        .WithMany()
-                        .HasForeignKey("_FileId");
-
-                    b.Navigation("_File");
+                    b.HasOne("ToDo.Domain.Models.Task", null)
+                        .WithMany("Files")
+                        .HasForeignKey("TaskId");
                 });
 
-            modelBuilder.Entity("ToDo.Domain.Models.Image", b =>
+            modelBuilder.Entity("ToDo.Domain.Models.AttachedImage", b =>
                 {
-                    b.HasOne("ToDo.Domain.Models.Image", "_Image")
-                        .WithMany()
-                        .HasForeignKey("_ImageId");
+                    b.HasOne("ToDo.Domain.Models.Task", null)
+                        .WithMany("Images")
+                        .HasForeignKey("TaskId");
+                });
 
-                    b.Navigation("_Image");
+            modelBuilder.Entity("ToDo.Domain.Models.Tag", b =>
+                {
+                    b.HasOne("ToDo.Domain.Models.Task", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("TaskId");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
+                {
+                    b.HasOne("ToDo.Domain.Models.User", "Account")
+                        .WithMany("Tasks")
+                        .HasForeignKey("AccountId");
+
+                    b.HasOne("ToDo.Domain.Models.Task", null)
+                        .WithMany("Subtasks")
+                        .HasForeignKey("TaskId");
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
+                {
+                    b.Navigation("Files");
+
+                    b.Navigation("Images");
+
+                    b.Navigation("Subtasks");
+
+                    b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.User", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

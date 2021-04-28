@@ -14,9 +14,8 @@ namespace ToDo.EntityFramework
 
         public DbSet<Domain.Models.User> Users { get; set; }
         public DbSet<Domain.Models.Task> Tasks { get; set; }
-        public DbSet<Domain.Models.SubTask> SubTasks { get; set; }
-        public DbSet<Domain.Models.Category> Categories { get; set; }
-        public DbSet<Domain.Models.File> Files { get; set; }
-        public DbSet<Domain.Models.Image> Images { get; set; }
+        public DbSet<Domain.Models.Tag> Categories { get; set; }
+        public DbSet<Domain.Models.AttachedImage> Images { get; set; }
+        public DbSet<Domain.Models.AttachedFile> Files { get; set; }
     }
 }

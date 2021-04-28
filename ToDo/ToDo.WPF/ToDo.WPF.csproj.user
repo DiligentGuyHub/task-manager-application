@@ -13,6 +13,9 @@
     <Compile Update="Controls\ExchangeRateListing.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\MainHeader.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ExchangeRateListing.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MainHeader.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\NavigationBar.xaml">

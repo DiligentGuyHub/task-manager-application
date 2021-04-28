@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ToDo.Domain.Models
 {
-    public class Image : DomainBase
+    public class Tag : DomainBase
     {
-        public string TaskId { get; set; }
-        public Image _Image { get; set; }
+        public string Name { get; set; }
     }
 }

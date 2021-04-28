@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rz21XtqNmX/uzJS6kHAav7JOnBTKIdZsj7SXr1pSf8+f0na1Fvi0/U7iqghSyapIPhGSeKqr9ObsFzcLsOQhgA==",
+  "dgSpecHash": "ovGLMdNIUAtZgJ9sg+SR4A5Yx7ESVfP3Kb3l53Cf8FlSJF6QArL4+K2T/0CT0ZnGyCeSjnCH9fXWNJ5ycLoXTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Документы\\C#\\WPF\\ToDo\\ToDo.API\\ToDo.API.csproj",
+  "projectFilePath": "C:\\Users\\longr\\OneDrive\\Documents\\C#\\WPF\\ToDo\\ToDo.API\\ToDo.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\longr\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

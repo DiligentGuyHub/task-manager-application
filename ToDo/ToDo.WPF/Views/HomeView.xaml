@@ -13,9 +13,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock>Home</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:MainHeader Grid.Row="0" Margin="0 10"
+                             HorizontalAlignment="Stretch"
+                             DataContext="{Binding MainHeaderViewModel}"/>
+
         <controls:ExchangeRateListing Grid.Row="1" Margin="0 10" 
-                                      HorizontalAlignment="Center"
+                                      HorizontalAlignment="Stretch"
                                       DataContext="{Binding ExchangeRateListingViewModel}"/>
     </Grid>
 </UserControl>

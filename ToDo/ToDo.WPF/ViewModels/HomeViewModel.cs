@@ -9,10 +9,12 @@ namespace ToDo.WPF.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         public ExchangeRateListingViewModel ExchangeRateListingViewModel { get; set; }
+        public MainHeaderViewModel MainHeaderViewModel { get; set; }
 
         public HomeViewModel(ExchangeRateListingViewModel exchangeRateViewModel)
         {
             ExchangeRateListingViewModel = exchangeRateViewModel;
+            MainHeaderViewModel = new MainHeaderViewModel();
         }
     }
 }

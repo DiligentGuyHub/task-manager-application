@@ -15,7 +15,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="{StaticResource BrushPrimary_1}" TargetName="gridMain"/>
+                            <Setter Property="Background" Value="{StaticResource BrushActivated}" TargetName="gridMain"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -25,7 +25,7 @@
             <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation To="{StaticResource ColorPrimary_1}" Duration="0:0:0.025" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation To="{StaticResource ColorHover}" Duration="0:0:0.025" Storyboard.TargetProperty="Background.Color"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
