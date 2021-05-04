@@ -4,31 +4,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Domain.Exceptions;
 using ToDo.Domain.Models;
 
 namespace ToDo.Domain.Services.AuthenticationServices
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly IDataService<User> _accountService;
-
-        public AuthenticationService(IDataService<User> accountService)
+        private readonly IAccountService _accountService;
+        private readonly IPasswordHasher _passwordHasher;
+        public AuthenticationService(IAccountService accountService, IPasswordHasher passwordHasher)
         {
             _accountService = accountService;
+            _passwordHasher = passwordHasher;
         }
 
-        public Task<User> Login(string username, string password)
+        public async Task<User> Login(string username, string password)
         {
-            throw new NotImplementedException();
-        }
+            User storedAccount = await _accountService.GetByUsername(username);
 
-        public async Task<bool> Register(string email, string username, string password, string confirmepassword)
-        {
-            bool success = false;
-            if(password == confirmepassword)
+            PasswordVerificationResult passwordVerificationResult = _passwordHasher.VerifyHashedPassword(storedAccount.PasswordHash, password);
+
+            if (passwordVerificationResult != PasswordVerificationResult.Success)
             {
-                IPasswordHasher hasher = new PasswordHasher();
-                string passwordhash = hasher.HashPassword(password);
+                throw new InvalidPasswordException(username, password);
+            }
+
+            return storedAccount;
+        }
+
+        public async Task<RegistrationResult> Register(string email, string username, string password, string confirmepassword)
+        {
+            RegistrationResult result = RegistrationResult.Success;
+
+            if (password == confirmepassword)
+            {
+                result = RegistrationResult.PasswordsDoNotMatch;
+            }
+
+            User emailAccount = await _accountService.GetByEmail(email);
+            if(emailAccount != null)
+            {
+                result = RegistrationResult.EmailAlreadyExists;
+            }
+
+            User usernameAccount = await _accountService.GetByUsername(username);
+            if (usernameAccount != null)
+            {
+                result = RegistrationResult.UsernameAlreadyExists;
+            }
+
+            if(result == RegistrationResult.Success)
+            {
+                string passwordhash = _passwordHasher.HashPassword(password);
 
                 User user = new User()
                 {
@@ -41,9 +69,10 @@ namespace ToDo.Domain.Services.AuthenticationServices
                 };
 
                 await _accountService.Create(user);
+
             }
 
-            return success;
+            return result;
         }
     }
 }

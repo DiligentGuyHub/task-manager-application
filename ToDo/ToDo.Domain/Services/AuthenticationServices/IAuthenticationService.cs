@@ -7,9 +7,17 @@ using ToDo.Domain.Models;
 
 namespace ToDo.Domain.Services
 {
+    public enum RegistrationResult
+    { 
+        Success,
+        PasswordsDoNotMatch,
+        EmailAlreadyExists,
+        UsernameAlreadyExists
+    }
+
     public interface IAuthenticationService
     {
-        Task<bool> Register(string email, string username, string password, string confirmepassword);
+        Task<RegistrationResult> Register(string email, string username, string password, string confirmepassword);
         Task<User> Login(string username, string password);
     }
 }

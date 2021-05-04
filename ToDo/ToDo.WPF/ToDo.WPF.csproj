@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Backgrounds\night-view.jpg" />
     <None Remove="Resources\Gifs\alarm-clock-1.gif" />
     <None Remove="Resources\Icons\next-week.svg" />
     <None Remove="Resources\Icons\priority-high.png" />
@@ -26,6 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Backgrounds\night-view.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Gifs\alarm-clock-1.gif" />
     <Resource Include="Resources\Icons\priority-high.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -54,6 +58,10 @@
       <SubType>Code</SubType>
       <DependentUpon>TodayView.xaml.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Account\" />
   </ItemGroup>
 
 </Project>

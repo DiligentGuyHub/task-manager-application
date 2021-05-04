@@ -11,6 +11,8 @@ namespace ToDo.WPF.State.Navigators
 {
     public enum ViewType
     {
+        Login,
+        Register,
         Home,
         Inbox,
         Today,
