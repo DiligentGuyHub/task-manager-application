@@ -6,39 +6,32 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Domain.Models;
 using ToDo.Domain.Services;
+using ToDo.EntityFramework.Services.Common;
 
 namespace ToDo.EntityFramework.Services
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainBase
     {
         private readonly ToDoDbContextFactory _contextFactory;
-
+        private readonly NonQueryDataService<T> _nonQueryDataService;
         public GenericDataService(ToDoDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
+            _nonQueryDataService = new NonQueryDataService<T>(contextFactory);
         }
 
         public async Task<T> Create(T entity)
         {
-            using (ToDoDbContext context = _contextFactory.CreateDbContext())
-            {
-                var result = await context.Set<T>().AddAsync(entity);
-                await context.SaveChangesAsync();
-
-                return result.Entity;
-            }
+            return await _nonQueryDataService.Create(entity);
         }
 
         public async Task<bool> Delete(int id)
         {
-            using (ToDoDbContext context = _contextFactory.CreateDbContext())
-            {
-                T entity = await context.Set<T>().FirstOrDefaultAsync((entity) => entity.Id == id);
-                context.Set<T>().Remove(entity);
-                await context.SaveChangesAsync();
-
-                return true;
-            }
+            return await _nonQueryDataService.Delete(id);
+        }
+        public async Task<T> Update(int id, T entity)
+        {
+            return await _nonQueryDataService.Update(id, entity);
         }
 
         public async Task<T> Get(int id)
@@ -59,17 +52,5 @@ namespace ToDo.EntityFramework.Services
             }
         }
 
-        public async Task<T> Update(int id, T entity)
-        {
-            using (ToDoDbContext context = _contextFactory.CreateDbContext())
-            {
-                entity.Id = id;
-
-                context.Set<T>().Update(entity);
-                await context.SaveChangesAsync();
-
-                return entity;
-            }
-        }
     }
 }

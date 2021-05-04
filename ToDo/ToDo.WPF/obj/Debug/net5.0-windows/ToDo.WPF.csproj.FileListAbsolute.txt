@@ -326,3 +326,12 @@ C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\ToDo.WPF.genruntimeconfig.cache
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\MainHeader.g.cs
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\MainHeader.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\TaskCreation.g.cs
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\WpfAnimatedGif.dll
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\TaskCreation.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Styles\TaskCreation.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\MaterialDesignColors.dll
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\NoteCreation.g.cs
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\NoteCreation.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\Microsoft.AspNet.Identity.Core.dll

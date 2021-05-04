@@ -18,9 +18,9 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Padding="10" FontSize="24" Text="Get Done" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushSecondary_1}"/>
+        <TextBlock Grid.Row="0" Padding="10" FontSize="24" Text="Get Done" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushForeground}"/>
         <StackPanel Grid.Row="1">
-            <TextBlock Padding="10" Text="Account stack panel" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushSecondary_1}"/>
+            <TextBlock Padding="10" Text="Account stack panel" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushForeground}"/>
         </StackPanel>
         <!--RenderOptions.EdgeMode="Aliased"-->
         <Grid Grid.Row="2" Background="{StaticResource BrushPrimary_2}">
@@ -38,7 +38,8 @@
             <RadioButton Grid.Row="0" Content="Home" 
                          IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:HomeViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
-            <RadioButton Grid.Row="1" Content="Inbox" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Inbox}"/>
+            <RadioButton Grid.Row="1" Content="Inbox" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Inbox}">
+            </RadioButton>
             <RadioButton Grid.Row="2" Content="Today" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Today}"/>
             <RadioButton Grid.Row="3" Content="Week" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Week}"/>
             <RadioButton Grid.Row="4" Content="Month" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Month}"/>

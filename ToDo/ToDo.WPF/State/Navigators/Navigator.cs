@@ -8,12 +8,15 @@ using System.Windows.Input;
 using ToDo.WPF.Commands;
 using ToDo.WPF.Models;
 using ToDo.WPF.ViewModels;
+using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.State.Navigators
 {
-    public class Navigator : ObservableObject, INavigator 
+    public class Navigator : ViewModelBase, INavigator 
     {
         private ViewModelBase _currentViewModel;
+        public ICommand UpdateCurrentViewModelCommand { get; set; }
+
         public ViewModelBase CurrentViewModel
         {
             get
@@ -26,8 +29,10 @@ namespace ToDo.WPF.State.Navigators
                 OnPropertyChanged(nameof(CurrentViewModel));
             }
         }
-        public ICommand UpdateCurrentViewModelCommand => new UpdateCurrentViewModelCommand(this);
 
-
+        public Navigator(IToDoViewModelAbstractFactory viewModelAbstractFactory)
+        {
+            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(this, viewModelAbstractFactory);
+        }
     }
 }

@@ -7,9 +7,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Gifs\alarm-clock-1.gif" />
+    <None Remove="Resources\Icons\next-week.svg" />
+    <None Remove="Resources\Icons\priority-high.png" />
+    <None Remove="Resources\Icons\priority-low.png" />
+    <None Remove="Resources\Icons\priority-medium.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ToDo.API\ToDo.API.csproj" />
     <ProjectReference Include="..\ToDo.Domain\ToDo.Domain.csproj" />
     <ProjectReference Include="..\ToDo.EntityFramework\ToDo.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Gifs\alarm-clock-1.gif" />
+    <Resource Include="Resources\Icons\priority-high.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\next-week.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\priority-low.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\priority-medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

@@ -19,6 +19,12 @@
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\NoteCreation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\TaskCreation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -48,6 +54,12 @@
     <Page Update="Controls\NavigationBar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\NoteCreation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TaskCreation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -55,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TaskCreation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\HomeView.xaml">

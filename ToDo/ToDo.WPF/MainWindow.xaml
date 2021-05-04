@@ -13,11 +13,10 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <controls:NavigationBar DataContext="{Binding Navigator}"/>
         <ContentControl Grid.Column="1" 
-                        HorizontalAlignment="Stretch"
                         Content="{Binding Navigator.CurrentViewModel}"/>
     </Grid>
 </Window>

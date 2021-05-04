@@ -11,17 +11,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <controls:MainHeader Grid.Row="0" Margin="0 10"
-                             HorizontalAlignment="Stretch"
+        
+        <controls:MainHeader Grid.Row="0" Margin="0 10" 
                              DataContext="{Binding MainHeaderViewModel}"/>
-
-        <controls:ExchangeRateListing Grid.Row="1" Margin="0 10" 
-                                      HorizontalAlignment="Stretch"
+    
+        <controls:ExchangeRateListing Grid.Row="1" Margin="0 10"
                                       DataContext="{Binding ExchangeRateListingViewModel}"/>
+        <controls:NoteCreation Grid.Row="2"/>
     </Grid>
 </UserControl>

@@ -59,7 +59,7 @@ namespace ToDo.EntityFramework.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("ToDo.Domain.Models.Tag", b =>
+            modelBuilder.Entity("ToDo.Domain.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,6 +77,26 @@ namespace ToDo.EntityFramework.Migrations
                     b.HasIndex("TaskId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.SubTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Header")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("SubTask");
                 });
 
             modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
@@ -101,17 +121,12 @@ namespace ToDo.EntityFramework.Migrations
                     b.Property<string>("Priority")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TaskId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("isCompleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
-
-                    b.HasIndex("TaskId");
 
                     b.ToTable("Tasks");
                 });
@@ -123,14 +138,20 @@ namespace ToDo.EntityFramework.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateJoined")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
@@ -154,40 +175,38 @@ namespace ToDo.EntityFramework.Migrations
                         .HasForeignKey("TaskId");
                 });
 
-            modelBuilder.Entity("ToDo.Domain.Models.Tag", b =>
+            modelBuilder.Entity("ToDo.Domain.Models.Category", b =>
                 {
                     b.HasOne("ToDo.Domain.Models.Task", null)
-                        .WithMany("Tags")
+                        .WithMany("Categories")
+                        .HasForeignKey("TaskId");
+                });
+
+            modelBuilder.Entity("ToDo.Domain.Models.SubTask", b =>
+                {
+                    b.HasOne("ToDo.Domain.Models.Task", null)
+                        .WithMany("Subtasks")
                         .HasForeignKey("TaskId");
                 });
 
             modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
                 {
                     b.HasOne("ToDo.Domain.Models.User", "Account")
-                        .WithMany("Tasks")
+                        .WithMany()
                         .HasForeignKey("AccountId");
-
-                    b.HasOne("ToDo.Domain.Models.Task", null)
-                        .WithMany("Subtasks")
-                        .HasForeignKey("TaskId");
 
                     b.Navigation("Account");
                 });
 
             modelBuilder.Entity("ToDo.Domain.Models.Task", b =>
                 {
+                    b.Navigation("Categories");
+
                     b.Navigation("Files");
 
                     b.Navigation("Images");
 
                     b.Navigation("Subtasks");
-
-                    b.Navigation("Tags");
-                });
-
-            modelBuilder.Entity("ToDo.Domain.Models.User", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

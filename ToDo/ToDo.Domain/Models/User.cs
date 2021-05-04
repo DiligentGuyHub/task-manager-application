@@ -12,9 +12,11 @@ namespace ToDo.Domain.Models
     {
         public string Username { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string Role { get; set; }
-        public IEnumerable<Task> Tasks { get; set; }
+        public bool Status { get; set; }
+        public DateTime DateJoined { get; set; }
+        public ICollection<Task> Tasks { get; set; }    
 
     }
 }

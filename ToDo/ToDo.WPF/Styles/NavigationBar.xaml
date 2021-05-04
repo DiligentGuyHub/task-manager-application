@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Name="NavButton" TargetType="RadioButton">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushForeground}"/>
         <Setter Property="Padding" Value="10 5"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Background" Value="{StaticResource BrushPrimary_2}"/>

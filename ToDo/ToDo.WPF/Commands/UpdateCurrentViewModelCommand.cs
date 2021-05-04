@@ -7,17 +7,20 @@ using System.Windows.Input;
 using ToDo.API.Services;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.ViewModels;
+using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands
 {
     public class UpdateCurrentViewModelCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private INavigator _navigator;
+        private readonly INavigator _navigator;
+        private readonly IToDoViewModelAbstractFactory _viewModelFactory;
 
-        public UpdateCurrentViewModelCommand(INavigator navigator)
+        public UpdateCurrentViewModelCommand(INavigator navigator, IToDoViewModelAbstractFactory viewModelFactory)
         {
             _navigator = navigator;
+            _viewModelFactory = viewModelFactory;
         }
 
         public bool CanExecute(object parameter)
@@ -30,25 +33,8 @@ namespace ToDo.WPF.Commands
             if (parameter is ViewType)
             {
                 ViewType viewType = (ViewType)parameter;
-                switch (viewType)
-                {
-                    case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(new ExchangeRateService()));
-                        break;
-                    case ViewType.Inbox:
-                        _navigator.CurrentViewModel = new InboxViewModel();
-                        break;
-                    case ViewType.Today:
-                        _navigator.CurrentViewModel = new TodayViewModel();
-                        break;
-                    case ViewType.Week:
-                        _navigator.CurrentViewModel = new WeekViewModel();
-                        break;
-                    case ViewType.Month:
-                        _navigator.CurrentViewModel = new MonthViewModel();
-                        break;
-                    default: break;
-                }
+
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
     }

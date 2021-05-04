@@ -8,12 +8,41 @@
     ".NETCoreApp,Version=v5.0": {
       "ToDo.WPF/1.0.0": {
         "dependencies": {
+          "MaterialDesignThemes": "4.0.0",
           "ToDo.API": "1.0.0",
           "ToDo.Domain": "1.0.0",
-          "ToDo.EntityFramework": "1.0.0"
+          "ToDo.EntityFramework": "1.0.0",
+          "WpfAnimatedGif": "2.0.0"
         },
         "runtime": {
           "ToDo.WPF.dll": {}
+        }
+      },
+      "MaterialDesignColors/2.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {
+            "assemblyVersion": "2.0.0.2422",
+            "fileVersion": "2.0.0.2422"
+          }
+        }
+      },
+      "MaterialDesignThemes/4.0.0": {
+        "dependencies": {
+          "MaterialDesignColors": "2.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "4.0.0.2422",
+            "fileVersion": "4.0.0.2422"
+          }
+        }
+      },
+      "Microsoft.AspNet.Identity.Core/2.2.3": {
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.3.11125"
+          }
         }
       },
       "Microsoft.CSharp/4.5.0": {},
@@ -882,6 +911,14 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "WpfAnimatedGif/2.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/WpfAnimatedGif.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "ToDo.API/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
@@ -893,6 +930,7 @@
       },
       "ToDo.Domain/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.3",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
@@ -916,6 +954,27 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "MaterialDesignColors/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+JoghC3QRK0u9Wul1To1ORjcfTbFTVzFPjJ02H7VREOdNzIIn427e8G9gP9hXu9pm1r2OneLnoCG/lTma5cG2w==",
+      "path": "materialdesigncolors/2.0.0",
+      "hashPath": "materialdesigncolors.2.0.0.nupkg.sha512"
+    },
+    "MaterialDesignThemes/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+n5oWHuRiYL/gUw2XfQHCRZqHtU8KbrdurgU0IcO98Zsyhw4BvggodfXY8veRtbjjmM9EJ/sG2yKBrgPOGX4JQ==",
+      "path": "materialdesignthemes/4.0.0",
+      "hashPath": "materialdesignthemes.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "hashPath": "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
@@ -1546,6 +1605,13 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "WpfAnimatedGif/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z468xEqg+MSSW30BkbIcwoCQ9E0GiRQxU6L9qYCUmP28fQ79Dq4QSakWm3Dfw8CoRY3xLl3gf1xRfqILSs6/mw==",
+      "path": "wpfanimatedgif/2.0.0",
+      "hashPath": "wpfanimatedgif.2.0.0.nupkg.sha512"
     },
     "ToDo.API/1.0.0": {
       "type": "project",
