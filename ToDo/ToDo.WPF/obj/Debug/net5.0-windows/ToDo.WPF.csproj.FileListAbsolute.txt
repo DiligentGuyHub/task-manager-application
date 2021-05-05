@@ -337,3 +337,7 @@ C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\Microsoft.AspNet.Identity.Core.dll
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\LoginView.g.cs
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\LoginView.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Styles\Classic.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Styles\Reddish.baml
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\SettingsView.g.cs
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\SettingsView.baml

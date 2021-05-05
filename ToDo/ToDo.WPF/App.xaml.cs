@@ -73,6 +73,7 @@ namespace ToDo.WPF
             services.AddSingleton<IToDoViewModelFactory<InboxViewModel>, InboxViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
+            services.AddSingleton<IToDoViewModelFactory<SettingsViewModel>, SettingsViewModelFactory>();
             //...
 
             services.AddScoped<INavigator, Navigator>();

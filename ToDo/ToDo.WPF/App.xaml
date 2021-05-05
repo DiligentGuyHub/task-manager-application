@@ -34,6 +34,10 @@
                 <views:MonthView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
                 <views:LoginView LoginCommand="{Binding LoginCommand}"/>
             </DataTemplate>

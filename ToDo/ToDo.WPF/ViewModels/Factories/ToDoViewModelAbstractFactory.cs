@@ -12,15 +12,18 @@ namespace ToDo.WPF.ViewModels.Factories
         private readonly IToDoViewModelFactory<HomeViewModel> _homeViewModelFactory;
         private readonly IToDoViewModelFactory<InboxViewModel> _inboxViewModelFactory;
         private readonly IToDoViewModelFactory<LoginViewModel> _loginViewModelFactory;
+        private readonly IToDoViewModelFactory<SettingsViewModel> _settingsViewModelFactory;
 
         public ToDoViewModelAbstractFactory(
             IToDoViewModelFactory<HomeViewModel> homeViewModelFactory,
-            IToDoViewModelFactory<InboxViewModel> inboxViewModelFactory
-,           IToDoViewModelFactory<LoginViewModel> loginViewModelFactory)
+            IToDoViewModelFactory<InboxViewModel> inboxViewModelFactory, 
+            IToDoViewModelFactory<LoginViewModel> loginViewModelFactory,
+            IToDoViewModelFactory<SettingsViewModel> settingsViewModelFactory)
         {
             _homeViewModelFactory = homeViewModelFactory;
             _inboxViewModelFactory = inboxViewModelFactory;
             _loginViewModelFactory = loginViewModelFactory;
+            _settingsViewModelFactory = settingsViewModelFactory;
         }
 
         public ViewModelBase CreateViewModel(ViewType viewType)
@@ -29,6 +32,8 @@ namespace ToDo.WPF.ViewModels.Factories
             {
                 case ViewType.Login:
                     return _loginViewModelFactory.CreateViewModel();
+                case ViewType.Settings:
+                    return _settingsViewModelFactory.CreateViewModel();
                 case ViewType.Home:
                     return _homeViewModelFactory.CreateViewModel();
                 case ViewType.Inbox:

@@ -18,7 +18,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Padding="10" FontSize="24" Text="Get Done" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushForeground}"/>
+        <Button Grid.Row="0" Background="{StaticResource BrushPrimary_1}"
+                HorizontalContentAlignment="Left"
+                Command="{Binding UpdateCurrentViewModelCommand}"
+                CommandParameter="{x:Static nav:ViewType.Settings}">
+            <TextBlock Padding="10" FontSize="24" Text="Get Done" Foreground="{StaticResource BrushForeground}"/>
+        </Button>
         <StackPanel Grid.Row="1">
             <TextBlock Padding="10" Text="Account stack panel" Background="{StaticResource BrushPrimary_1}" Foreground="{StaticResource BrushForeground}"/>
         </StackPanel>
