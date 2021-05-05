@@ -8,5 +8,10 @@ namespace ToDo.WPF.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
+
+        public void UpdateCurrentViewModel(object parameter)
+        {
+            int a = 10;
+        }
     }
 }

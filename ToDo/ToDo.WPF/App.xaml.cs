@@ -16,6 +16,7 @@ using ToDo.EntityFramework;
 using ToDo.EntityFramework.Services;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
+using ToDo.WPF.State.Settings;
 using ToDo.WPF.ViewModels;
 using ToDo.WPF.ViewModels.Factories;
 
@@ -78,6 +79,7 @@ namespace ToDo.WPF
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<IAuthenticator, Authenticator>();
+            services.AddScoped<ISettings, Settings>();
             services.AddScoped<MainViewModel>();
 
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));

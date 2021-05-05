@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using ToDo.WPF.Commands;
 using ToDo.WPF.ViewModels;
+using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.State.Settings
 {
@@ -24,11 +25,11 @@ namespace ToDo.WPF.State.Settings
             }
         }
 
-        public ICommand UpdateCurrentTheme { get; set; }
+        public ICommand UpdateCurrentThemeCommand { get; set; }
 
-        public Settings()
+        public Settings(SettingsViewModelFactory settingsViewModelFactory)
         {
-            UpdateCurrentTheme = new UpdateCurrentThemeCommand();
+            UpdateCurrentThemeCommand = new UpdateCurrentThemeCommand(this, settingsViewModelFactory);
         }
     }
 }

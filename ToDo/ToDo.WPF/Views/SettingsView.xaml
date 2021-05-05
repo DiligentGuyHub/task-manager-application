@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ToDo.WPF.Views"
+             xmlns:local="clr-namespace:ToDo.WPF.Views" xmlns:settings="clr-namespace:ToDo.WPF.State.Settings" d:DataContext="{d:DesignInstance Type=settings:Settings}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--xmlns:set="clr-namespace:ToDo.WPF.State.Settings"
+             d:DataContext="{d:DesignInstance Type=set:Settings}"-->
     <Grid Background="{StaticResource BrushBackgroundReversed}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -30,13 +32,22 @@
                 <StackPanel Grid.Column="0" Margin="5 5">
                     <Image
                            Source="pack://application:,,,/Resources/Backgrounds/reddish-theme.png"/>
-                    <RadioButton Content="Reddish theme"
-                                 Command="{}"/>
+                    <!--<RadioButton Content="Reddish theme"
+                                 Command="{Binding UpdateCurrentThemeCommand}"
+                                 CommandParameter="Reddish"/>-->
+                    <Button x:Name="Reddish"
+                            Content="Reddish theme"
+                            Click="SwitchToReddish"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Margin="5 5">
                     <Image
                            Source="pack://application:,,,/Resources/Backgrounds/classic-theme.png"/>
-                    <RadioButton Content="Classic"/>
+                    <!--<RadioButton Content="Classic"
+                                 Command="{Binding UpdateCurrentThemeCommand}"
+                                 CommandParameter="Classic"/>-->
+                    <Button x:Name="Classic"
+                            Content="Classic theme"
+                            Click="SwitchToClassic"/>
                 </StackPanel>
             </Grid>
         </Grid>
