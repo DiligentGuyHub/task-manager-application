@@ -7,20 +7,21 @@ using System.Windows.Input;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.ViewModels;
+using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands
 {
     public class LoginCommand : ICommand
     {
         private readonly LoginViewModel _loginViewModel;
-        private readonly INavigator _navigator;
+        private readonly IRenavigator _renavigator;
         private readonly IAuthenticator _authenticator;
 
-        public LoginCommand(IAuthenticator authenticator, LoginViewModel loginViewModel, INavigator navigator)
+        public LoginCommand(IAuthenticator authenticator, LoginViewModel loginViewModel, IRenavigator renavigator)
         {
             _authenticator = authenticator;
             _loginViewModel = loginViewModel;
-            _navigator = navigator;
+            _renavigator = renavigator;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -34,9 +35,9 @@ namespace ToDo.WPF.Commands
         {
             bool success = await _authenticator.Login(_loginViewModel.Username, parameter.ToString());
 
-            if(success)
+            if (success)
             {
-                //_navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
+                _renavigator.Renavigate();
             }
         }
     }

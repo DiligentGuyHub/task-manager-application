@@ -31,9 +31,9 @@ namespace ToDo.WPF
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
             IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
-            
+
             //await authentication.Login("test", "test");
-            
+
             //IExchangeRateService exchangeRateService = serviceProvider.GetRequiredService<IExchangeRateService>();
 
             //new ExchangeRateService().GetExchangeRate(RateType.USD).ContinueWith((task) =>
@@ -63,7 +63,7 @@ namespace ToDo.WPF
             services.AddSingleton<ToDoDbContextFactory>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IDataService<User>, AccountDataService>();
-            services.AddSingleton<IAccountService, AccountDataService>(); 
+            services.AddSingleton<IAccountService, AccountDataService>();
             services.AddSingleton<IExchangeRateService, ExchangeRateService>();
             services.AddSingleton<IExchangeRateService, ExchangeRateService>();
 
@@ -73,9 +73,15 @@ namespace ToDo.WPF
             services.AddSingleton<IToDoViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<InboxViewModel>, InboxViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();
-            services.AddSingleton<IToDoViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
+            services.AddSingleton<IToDoViewModelFactory<LoginViewModel>>(
+                (services) =>
+                    new LoginViewModelFactory(
+                        services.GetRequiredService<IAuthenticator>(),
+                        new ViewModelFactoryRenavigator<HomeViewModel>(
+                            services.GetRequiredService<INavigator>(),
+                            services.GetRequiredService<IToDoViewModelFactory<HomeViewModel>>()))
+            );
             services.AddSingleton<IToDoViewModelFactory<SettingsViewModel>, SettingsViewModelFactory>();
-            //...
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<IAuthenticator, Authenticator>();

@@ -27,9 +27,9 @@ namespace ToDo.WPF.ViewModels
         }
 
         public ICommand LoginCommand { get; }
-        public LoginViewModel(IAuthenticator authenticator, INavigator navigator)
+        public LoginViewModel(IAuthenticator authenticator, IRenavigator renavigator)
         {
-            LoginCommand = new LoginCommand(authenticator, this, navigator);
+            LoginCommand = new LoginCommand(authenticator, this, renavigator);
         }
 
     }
