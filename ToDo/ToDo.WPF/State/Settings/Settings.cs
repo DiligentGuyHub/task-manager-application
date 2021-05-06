@@ -13,23 +13,5 @@ namespace ToDo.WPF.State.Settings
 {
     public class Settings : ViewModelBase, ISettings
     {
-        private ResourceDictionary _currentTheme;
-
-        public ResourceDictionary CurrentTheme
-        {
-            get { return _currentTheme; }
-            set
-            {
-                _currentTheme = value;
-                OnPropertyChanged(nameof(CurrentTheme));
-            }
-        }
-
-        public ICommand UpdateCurrentThemeCommand { get; set; }
-
-        public Settings(SettingsViewModelFactory settingsViewModelFactory)
-        {
-            UpdateCurrentThemeCommand = new UpdateCurrentThemeCommand(this, settingsViewModelFactory);
-        }
     }
 }

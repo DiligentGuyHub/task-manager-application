@@ -13,13 +13,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <controls:MainHeader Grid.Row="0" Margin="0 10" 
                              DataContext="{Binding MainHeaderViewModel}"/>
-    
+
         <controls:ExchangeRateListing Grid.Row="1" Margin="0 10"
                                       DataContext="{Binding ExchangeRateListingViewModel}"/>
-        <controls:NoteCreation Grid.Row="2"/>
     </Grid>
 </UserControl>

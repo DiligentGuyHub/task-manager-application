@@ -20,28 +20,34 @@ namespace ToDo.WPF.Views
     /// </summary>
     public partial class SettingsView : UserControl
     {
-        private readonly ResourceDictionary NavigationBar = Application.LoadComponent(new Uri("/Styles/NavigationBar.xaml", UriKind.Relative)) as ResourceDictionary;
-
         public SettingsView()
         {
             InitializeComponent();
         }
 
-        private void SwitchToClassic(object sender, RoutedEventArgs e)
-        {
-            var uri = new Uri("/Styles/Classic.xaml", UriKind.Relative);
-            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resource);
-            Application.Current.Resources.MergedDictionaries.Add(NavigationBar);
-        }
-        private void SwitchToReddish(object sender, RoutedEventArgs e)
-        {
-            var uri = new Uri("/Styles/Reddish.xaml", UriKind.Relative);
-            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resource);
-            Application.Current.Resources.MergedDictionaries.Add(NavigationBar);
-        }
+        //private void SwitchToClassic(object sender, RoutedEventArgs e)
+        //{
+        //    var uri = new Uri("/Styles/Classic.xaml", UriKind.Relative);
+        //    ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+        //    Application.Current.Resources.MergedDictionaries.Clear();
+        //    Application.Current.Resources.MergedDictionaries.Add(resource);
+        //    Application.Current.Resources.MergedDictionaries.Add(NavigationBar);
+        //}
+        //private void SwitchToReddish(object sender, RoutedEventArgs e)
+        //{
+        //    var uri = new Uri("/Styles/Reddish.xaml", UriKind.Relative);
+        //    ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+        //    Application.Current.Resources.MergedDictionaries.Clear();
+        //    Application.Current.Resources.MergedDictionaries.Add(resource);
+        //    Application.Current.Resources.MergedDictionaries.Add(NavigationBar);
+        //}
+        //private void SwitchToBluish(object sender, RoutedEventArgs e)
+        //{
+        //    var uri = new Uri("/Styles/Bluish.xaml", UriKind.Relative);
+        //    ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+        //    Application.Current.Resources.MergedDictionaries.Clear();
+        //    Application.Current.Resources.MergedDictionaries.Add(resource);
+        //    Application.Current.Resources.MergedDictionaries.Add(NavigationBar);
+        //}
     }
 }

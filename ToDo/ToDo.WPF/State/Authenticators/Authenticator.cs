@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Domain.Models;
 using ToDo.Domain.Services;
+using ToDo.WPF.Models;
 
 namespace ToDo.WPF.State.Authenticators
 {
-    public class Authenticator : IAuthenticator
+    public class Authenticator : ObservableObject, IAuthenticator
     {
         private readonly IAuthenticationService _authenticationService;
 
@@ -16,8 +17,20 @@ namespace ToDo.WPF.State.Authenticators
         {
             _authenticationService = authenticationService;
         }
-
-        public User CurrentUser { get; private set; }
+        private User _currentUser;
+        public User CurrentUser 
+        {
+            get
+            {
+                return _currentUser;
+            }
+            private set 
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+                OnPropertyChanged(nameof(IsLoggedIn));
+            }
+        }
         public bool IsLoggedIn => CurrentUser != null;
 
         public async Task<bool> Login(string username, string password)

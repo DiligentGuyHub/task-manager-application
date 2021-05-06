@@ -69,7 +69,7 @@ namespace ToDo.WPF
 
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-            services.AddSingleton<IToDoViewModelAbstractFactory, ToDoViewModelAbstractFactory>();
+            services.AddSingleton<IToDoViewModelAbstractFactory, ToDoViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<InboxViewModel>, InboxViewModelFactory>();
             services.AddSingleton<IToDoViewModelFactory<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();

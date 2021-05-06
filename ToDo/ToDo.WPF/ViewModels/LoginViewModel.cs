@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ToDo.WPF.Commands;
 using ToDo.WPF.State.Authenticators;
+using ToDo.WPF.State.Navigators;
 
 namespace ToDo.WPF.ViewModels
 {
@@ -26,9 +27,9 @@ namespace ToDo.WPF.ViewModels
         }
 
         public ICommand LoginCommand { get; }
-        public LoginViewModel(IAuthenticator authenticator)
+        public LoginViewModel(IAuthenticator authenticator, INavigator navigator)
         {
-            LoginCommand = new LoginCommand(authenticator, this);
+            LoginCommand = new LoginCommand(authenticator, this, navigator);
         }
 
     }

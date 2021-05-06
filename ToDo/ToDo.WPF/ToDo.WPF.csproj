@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Backgrounds\bluish-theme.png" />
     <None Remove="Resources\Backgrounds\classic-theme.png" />
     <None Remove="Resources\Backgrounds\dark-theme-1.png" />
     <None Remove="Resources\Backgrounds\night-view.jpg" />
@@ -30,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Backgrounds\bluish-theme.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Backgrounds\classic-theme.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -74,6 +78,12 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\Account\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\Bluish.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>

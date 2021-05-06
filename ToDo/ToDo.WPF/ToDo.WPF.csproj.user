@@ -66,7 +66,13 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\Bluish.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\TaskCreation.xaml">

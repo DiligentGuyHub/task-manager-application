@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:set="clr-namespace:ToDo.WPF.State.Settings"
              xmlns:local="clr-namespace:ToDo.WPF.Views" xmlns:settings="clr-namespace:ToDo.WPF.State.Settings" d:DataContext="{d:DesignInstance Type=settings:Settings}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -23,32 +24,54 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <CheckBox Grid.Row="0">What?</CheckBox>
+            <CheckBox Grid.Row="0" x:Name="checkbox1" Content="Check it out"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="300"/>
+                    <!--<ColumnDefinition Width="150"/>-->
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="5 5">
-                    <Image
-                           Source="pack://application:,,,/Resources/Backgrounds/reddish-theme.png"/>
-                    <!--<RadioButton Content="Reddish theme"
+
+                <Border Grid.Column="0"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Resources/Backgrounds/reddish-theme.png"/>
+
+                        <!--<RadioButton Content="Reddish theme"
                                  Command="{Binding UpdateCurrentThemeCommand}"
                                  CommandParameter="Reddish"/>-->
-                    <Button x:Name="Reddish"
+                        <Button x:Name="Reddish"
                             Content="Reddish theme"
-                            Click="SwitchToReddish"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="5 5">
-                    <Image
-                           Source="pack://application:,,,/Resources/Backgrounds/classic-theme.png"/>
-                    <!--<RadioButton Content="Classic"
+                            Command="{Binding UpdateCurrentThemeCommand}"
+                            CommandParameter="{x:Static set:ThemeType.Reddish}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Resources/Backgrounds/classic-theme.png"/>
+                        <!--<RadioButton Content="Classic theme"
                                  Command="{Binding UpdateCurrentThemeCommand}"
                                  CommandParameter="Classic"/>-->
-                    <Button x:Name="Classic"
+                        <Button x:Name="Classic"
                             Content="Classic theme"
-                            Click="SwitchToClassic"/>
-                </StackPanel>
+                            Command="{Binding UpdateCurrentThemeCommand}"
+                            CommandParameter="{x:Static set:ThemeType.Reddish}"/>
+                    </StackPanel>
+                </Border>
+
+                <!--<Border Grid.Column="2"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Resources/Backgrounds/bluish-theme.png"/>
+                        -->
+                <!--<RadioButton Content="Classic theme"
+                                 Command="{Binding UpdateCurrentThemeCommand}"
+                                 CommandParameter="Classic"/>-->
+                <!--
+                        <Button x:Name="Bluish"
+                            Content="Bluish theme"
+                            Click="SwitchToBluish"/>
+                    </StackPanel>
+                </Border>-->
             </Grid>
         </Grid>
     </Grid>

@@ -15,7 +15,6 @@ namespace ToDo.WPF.State.Navigators
     public class Navigator : ViewModelBase, INavigator 
     {
         private ViewModelBase _currentViewModel;
-        public ICommand UpdateCurrentViewModelCommand { get; set; }
 
         public ViewModelBase CurrentViewModel
         {
@@ -28,11 +27,6 @@ namespace ToDo.WPF.State.Navigators
                 _currentViewModel = value;
                 OnPropertyChanged(nameof(CurrentViewModel));
             }
-        }
-
-        public Navigator(IToDoViewModelAbstractFactory viewModelAbstractFactory)
-        {
-            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(this, viewModelAbstractFactory);
         }
     }
 }

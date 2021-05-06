@@ -12,11 +12,28 @@
         Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <controls:NavigationBar DataContext="{Binding Navigator}"/>
-        <ContentControl Grid.Column="1" 
-                        Content="{Binding Navigator.CurrentViewModel}"/>
+
+        <Grid Grid.Column="0">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Authenticator.IsLoggedIn}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <controls:NavigationBar/>
+        </Grid>
+        
+        <ContentControl Content="{Binding Navigator.CurrentViewModel}"/>
+
+        <!--<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+           
+        </ScrollViewer>-->
+        
     </Grid>
 </Window>

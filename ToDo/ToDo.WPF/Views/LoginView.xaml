@@ -53,6 +53,7 @@
                 </Grid>
 
                 <Button Grid.Row="2" Grid.Column="2" 
+                        IsDefault="True"
                         HorizontalAlignment="Center" 
                         Content="Login"
                         Click="Button_Click"/>

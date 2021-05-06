@@ -7,30 +7,14 @@
     <Color x:Key="ColorSecondary_1">white</Color>
     <Color x:Key="ColorSecondary_2">#73B1D6</Color>-->
     <!-- Classic -->
-    <Color x:Key="ColorPrimary_1">#222831</Color>
-    <Color x:Key="ColorPrimary_2">#393e46</Color>
-    <Color x:Key="ColorHover">#00adb5</Color>
-    <Color x:Key="ColorActivated">#006b70</Color>
-    <Color x:Key="ColorForeground">#eeeeee</Color>
-    <Color x:Key="ColorBackgroundReversed">#eeeeee</Color>
-    <Color x:Key="ColorForegroundReversed">#000000</Color>
+    <Color x:Key="ColorPrimary_1">#dbe2ef</Color>
+    <Color x:Key="ColorPrimary_2">#f9f7f7</Color>
+    <Color x:Key="ColorHover">#3f72af</Color>
+    <Color x:Key="ColorActivated">#112d4e</Color>
+    <Color x:Key="ColorForeground">#0f0f0f</Color>
+    <Color x:Key="ColorBackgroundReversed">#000000</Color>
+    <Color x:Key="ColorForegroundReversed">#ffffff</Color>
     <Color x:Key="ColorSecondary_2">#73B1D6</Color>
-
-    <!--<Style x:Key="TextBoxBase" TargetType="Control">
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Control">
-                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}"/>
-    <Style TargetType="PasswordBox" BasedOn="{StaticResource TextBoxBase}"/>-->
 
     <!--<Color x:Key="ColorPrimary_1">#903749</Color>   
     <Color x:Key="ColorPrimary_2">#e84545</Color>

@@ -26,25 +26,51 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            
+        </Style.Triggers>
     </Style>
     <Style x:Name="TaskBorder" TargetType="Border">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderBrush" Value="{StaticResource BrushActivated}"/>
         <Style.Triggers>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="Red"/>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+
+            <Trigger Property="IsMouseCaptured" Value="True">
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Name="Combo" TargetType="ComboBox">
 
         <Style.Triggers>
-            <!--<Trigger Property="IsMouseOver" Value="True">
+            <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="IsDropDownOpen" Value="True"/>
-            </Trigger>-->
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="False"/>
+                    <Condition Property="IsFocused" Value="False"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="IsDropDownOpen" Value="False"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
 
-            <!--<EventTrigger RoutedEvent="MouseLeave">
+            <Trigger Property="IsFocused" Value="True">
+                
+            </Trigger>
+
+
+                <!--<EventTrigger RoutedEvent="MouseLeave">
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard>

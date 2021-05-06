@@ -7,14 +7,14 @@ using ToDo.WPF.State.Navigators;
 
 namespace ToDo.WPF.ViewModels.Factories
 {
-    public class ToDoViewModelAbstractFactory : IToDoViewModelAbstractFactory
+    public class ToDoViewModelFactory : IToDoViewModelAbstractFactory
     {
         private readonly IToDoViewModelFactory<HomeViewModel> _homeViewModelFactory;
         private readonly IToDoViewModelFactory<InboxViewModel> _inboxViewModelFactory;
         private readonly IToDoViewModelFactory<LoginViewModel> _loginViewModelFactory;
         private readonly IToDoViewModelFactory<SettingsViewModel> _settingsViewModelFactory;
 
-        public ToDoViewModelAbstractFactory(
+        public ToDoViewModelFactory(
             IToDoViewModelFactory<HomeViewModel> homeViewModelFactory,
             IToDoViewModelFactory<InboxViewModel> inboxViewModelFactory, 
             IToDoViewModelFactory<LoginViewModel> loginViewModelFactory,

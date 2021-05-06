@@ -16,7 +16,5 @@ namespace ToDo.WPF.State.Settings
     }
     public interface ISettings
     {
-        public ResourceDictionary CurrentTheme { get; }
-        public ICommand UpdateCurrentThemeCommand { get; }
     }
 }
