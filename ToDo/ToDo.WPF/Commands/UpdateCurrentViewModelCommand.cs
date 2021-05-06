@@ -15,9 +15,9 @@ namespace ToDo.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
         private readonly INavigator _navigator;
-        private readonly IToDoViewModelAbstractFactory _viewModelFactory;
+        private readonly IToDoViewModelFactory _viewModelFactory;
 
-        public UpdateCurrentViewModelCommand(INavigator navigator, IToDoViewModelAbstractFactory viewModelFactory)
+        public UpdateCurrentViewModelCommand(INavigator navigator, IToDoViewModelFactory viewModelFactory)
         {
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;

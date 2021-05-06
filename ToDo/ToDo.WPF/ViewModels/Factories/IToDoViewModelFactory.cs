@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.WPF.State.Navigators;
 
 namespace ToDo.WPF.ViewModels.Factories
 {
-    public interface IToDoViewModelFactory<T> where T : ViewModelBase
+    public interface IToDoViewModelFactory
     {
-        T CreateViewModel();
+        ViewModelBase CreateViewModel(ViewType viewType);
     }
 }

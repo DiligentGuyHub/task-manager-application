@@ -69,19 +69,48 @@ namespace ToDo.WPF
 
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-            services.AddSingleton<IToDoViewModelAbstractFactory, ToDoViewModelFactory>();
-            services.AddSingleton<IToDoViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
-            services.AddSingleton<IToDoViewModelFactory<InboxViewModel>, InboxViewModelFactory>();
-            services.AddSingleton<IToDoViewModelFactory<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();
-            services.AddSingleton<IToDoViewModelFactory<LoginViewModel>>(
-                (services) =>
-                    new LoginViewModelFactory(
-                        services.GetRequiredService<IAuthenticator>(),
-                        new ViewModelFactoryRenavigator<HomeViewModel>(
-                            services.GetRequiredService<INavigator>(),
-                            services.GetRequiredService<IToDoViewModelFactory<HomeViewModel>>()))
-            );
-            services.AddSingleton<IToDoViewModelFactory<SettingsViewModel>, SettingsViewModelFactory>();
+            services.AddSingleton<IToDoViewModelFactory, ToDoViewModelFactory>();
+            services.AddSingleton<InboxViewModel>();
+            services.AddSingleton<SettingsViewModel>();
+
+            // HomeViewModel
+            services.AddSingleton<CreateViewModel<HomeViewModel>>(services =>
+            {
+                return () => new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
+                    services.GetRequiredService<IExchangeRateService>()));
+            });
+            // InboxViewModel
+            services.AddSingleton<CreateViewModel<InboxViewModel>>(services =>
+            {
+                return () => services.GetRequiredService<InboxViewModel>();
+            });
+            // SettingsViewModel
+            services.AddSingleton<CreateViewModel<SettingsViewModel>>(services =>
+            {
+                return () => services.GetRequiredService<SettingsViewModel>();
+            });
+            services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>();
+            // LoginViewModel
+            services.AddSingleton<CreateViewModel<LoginViewModel>>(services =>
+            {
+                return () => new LoginViewModel(
+                    services.GetRequiredService<IAuthenticator>(),
+                    services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>());
+            });
+
+
+            //services.AddSingleton<ToDoViewModelFactory2<HomeViewModel>, HomeViewModelFactory>();
+            //services.AddSingleton<ToDoViewModelFactory2<InboxViewModel>, InboxViewModelFactory>();
+            //services.AddSingleton<ToDoViewModelFactory2<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();
+            //services.AddSingleton<ToDoViewModelFactory2<LoginViewModel>>(
+            //    (services) =>
+            //        new LoginViewModelFactory(
+            //            services.GetRequiredService<IAuthenticator>(),
+            //            new ViewModelFactoryRenavigator<HomeViewModel>(
+            //                services.GetRequiredService<INavigator>(),
+            //                services.GetRequiredService<ToDoViewModelFactory2<HomeViewModel>>()))
+            //);
+            //services.AddSingleton<ToDoViewModelFactory2<SettingsViewModel>, SettingsViewModelFactory>();
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<IAuthenticator, Authenticator>();

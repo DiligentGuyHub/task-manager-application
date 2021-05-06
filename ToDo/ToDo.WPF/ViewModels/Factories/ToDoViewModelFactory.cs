@@ -7,23 +7,22 @@ using ToDo.WPF.State.Navigators;
 
 namespace ToDo.WPF.ViewModels.Factories
 {
-    public class ToDoViewModelFactory : IToDoViewModelAbstractFactory
+    public class ToDoViewModelFactory : IToDoViewModelFactory
     {
-        private readonly IToDoViewModelFactory<HomeViewModel> _homeViewModelFactory;
-        private readonly IToDoViewModelFactory<InboxViewModel> _inboxViewModelFactory;
-        private readonly IToDoViewModelFactory<LoginViewModel> _loginViewModelFactory;
-        private readonly IToDoViewModelFactory<SettingsViewModel> _settingsViewModelFactory;
+        private readonly CreateViewModel<HomeViewModel> _createHomeViewModel;
+        private readonly CreateViewModel<InboxViewModel> _createInboxViewModel;
+        private readonly CreateViewModel<LoginViewModel> _createLoginViewModel;
+        private readonly CreateViewModel<SettingsViewModel> _createSettingsViewModel;
 
-        public ToDoViewModelFactory(
-            IToDoViewModelFactory<HomeViewModel> homeViewModelFactory,
-            IToDoViewModelFactory<InboxViewModel> inboxViewModelFactory, 
-            IToDoViewModelFactory<LoginViewModel> loginViewModelFactory,
-            IToDoViewModelFactory<SettingsViewModel> settingsViewModelFactory)
+        public ToDoViewModelFactory(CreateViewModel<HomeViewModel> createHomeViewModel,
+                                    CreateViewModel<InboxViewModel> createInboxViewModel,
+                                    CreateViewModel<LoginViewModel> createLoginViewModel,
+                                    CreateViewModel<SettingsViewModel> createSettingsViewModel)
         {
-            _homeViewModelFactory = homeViewModelFactory;
-            _inboxViewModelFactory = inboxViewModelFactory;
-            _loginViewModelFactory = loginViewModelFactory;
-            _settingsViewModelFactory = settingsViewModelFactory;
+            _createHomeViewModel = createHomeViewModel;
+            _createInboxViewModel = createInboxViewModel;
+            _createLoginViewModel = createLoginViewModel;
+            _createSettingsViewModel = createSettingsViewModel;
         }
 
         public ViewModelBase CreateViewModel(ViewType viewType)
@@ -31,13 +30,13 @@ namespace ToDo.WPF.ViewModels.Factories
             switch (viewType)
             {
                 case ViewType.Login:
-                    return _loginViewModelFactory.CreateViewModel();
+                    return _createLoginViewModel();
                 case ViewType.Settings:
-                    return _settingsViewModelFactory.CreateViewModel();
+                    return _createSettingsViewModel();
                 case ViewType.Home:
-                    return _homeViewModelFactory.CreateViewModel();
+                    return _createHomeViewModel();
                 case ViewType.Inbox:
-                    return _inboxViewModelFactory.CreateViewModel();
+                    return _createInboxViewModel();
                 case ViewType.Today:
                     return new TodayViewModel();
                 case ViewType.Week:

@@ -14,12 +14,12 @@ namespace ToDo.WPF.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public INavigator Navigator { get; set; }
-        public IToDoViewModelAbstractFactory ViewModelFactory { get; }
+        public IToDoViewModelFactory ViewModelFactory { get; }
         public IAuthenticator Authenticator { get; }
         public ICommand UpdateCurrentViewModelCommand { get; }
 
 
-        public MainViewModel(INavigator navigator, IToDoViewModelAbstractFactory viewModelFactory, IAuthenticator authenticator)
+        public MainViewModel(INavigator navigator, IToDoViewModelFactory viewModelFactory, IAuthenticator authenticator)
         {
             Navigator = navigator;
             ViewModelFactory = viewModelFactory;
