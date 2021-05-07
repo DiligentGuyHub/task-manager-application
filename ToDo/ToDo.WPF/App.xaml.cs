@@ -70,19 +70,31 @@ namespace ToDo.WPF
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
             services.AddSingleton<IToDoViewModelFactory, ToDoViewModelFactory>();
+            services.AddSingleton<HomeViewModel>(services => new HomeViewModel(
+                ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
+                    services.GetRequiredService<IExchangeRateService>()),
+                    services.GetRequiredService<IAuthenticator>()
+                ));
             services.AddSingleton<InboxViewModel>();
+            services.AddSingleton<TodayViewModel>();
             services.AddSingleton<SettingsViewModel>();
 
             // HomeViewModel
             services.AddSingleton<CreateViewModel<HomeViewModel>>(services =>
             {
-                return () => new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
-                    services.GetRequiredService<IExchangeRateService>()));
+                return () => services.GetRequiredService<HomeViewModel>();
+                //return () => new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
+                //    services.GetRequiredService<IExchangeRateService>()));
             });
             // InboxViewModel
             services.AddSingleton<CreateViewModel<InboxViewModel>>(services =>
             {
                 return () => services.GetRequiredService<InboxViewModel>();
+            });
+            // TodayViewModel
+            services.AddSingleton<CreateViewModel<TodayViewModel>>(services =>
+            {
+                return () => services.GetRequiredService<TodayViewModel>();
             });
             // SettingsViewModel
             services.AddSingleton<CreateViewModel<SettingsViewModel>>(services =>

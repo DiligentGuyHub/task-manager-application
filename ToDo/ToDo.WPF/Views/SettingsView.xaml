@@ -15,9 +15,9 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Border Margin="10 10" Grid.Row="0" BorderBrush="{StaticResource BrushActivated}" BorderThickness="0 0 0 2">
-            <TextBlock FontSize="48" Text="Settings"/>
+            <TextBlock FontSize="48" Text="Settings" Padding="0 0 0 10"/>
         </Border>
-        <Grid Grid.Row="1" Margin="10 5">
+        <Grid Grid.Row="1" Margin="10 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -32,32 +32,30 @@
                     <!--<ColumnDefinition Width="150"/>-->
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
-                    <StackPanel>
-                        <Image Source="pack://application:,,,/Resources/Backgrounds/reddish-theme.png"/>
-
-                        <!--<RadioButton Content="Reddish theme"
+                    <!--<RadioButton Content="Reddish theme"
                                  Command="{Binding UpdateCurrentThemeCommand}"
                                  CommandParameter="Reddish"/>-->
-                        <Button x:Name="Reddish"
-                            Content="Reddish theme"
-                            Command="{Binding UpdateCurrentThemeCommand}"
-                            CommandParameter="{x:Static set:ThemeType.Reddish}"/>
-                    </StackPanel>
-                </Border>
+                <Button x:Name="Reddish"
+                        Grid.Column="0"
+                        Margin="10"
+                        Command="{Binding UpdateCurrentThemeCommand}"
+                        CommandParameter="{x:Static set:ThemeType.Reddish}">
+                    <Grid>
+                        <Image Source="pack://application:,,,/Resources/Backgrounds/reddish-theme.png"/>
+                        <TextBlock Text="Reddish" FontSize="48" Foreground="Black"/>
+                    </Grid>
+                </Button>
 
-                <Border Grid.Column="1"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
-                    <StackPanel>
+                <Button x:Name="Classic"
+                        Grid.Column="1"
+                        Margin="10"
+                        Command="{Binding UpdateCurrentThemeCommand}"
+                        CommandParameter="{x:Static set:ThemeType.Classic}">
+                    <Grid>
                         <Image Source="pack://application:,,,/Resources/Backgrounds/classic-theme.png"/>
-                        <!--<RadioButton Content="Classic theme"
-                                 Command="{Binding UpdateCurrentThemeCommand}"
-                                 CommandParameter="Classic"/>-->
-                        <Button x:Name="Classic"
-                            Content="Classic theme"
-                            Command="{Binding UpdateCurrentThemeCommand}"
-                            CommandParameter="{x:Static set:ThemeType.Reddish}"/>
-                    </StackPanel>
-                </Border>
+                        <TextBlock Text="Classic" FontSize="48" Foreground="White"/>
+                    </Grid>
+                </Button>
 
                 <!--<Border Grid.Column="2"  Margin="5 5" BorderBrush="Black" BorderThickness="1">
                     <StackPanel>

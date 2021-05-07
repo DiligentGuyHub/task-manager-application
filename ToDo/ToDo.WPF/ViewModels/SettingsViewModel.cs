@@ -17,9 +17,5 @@ namespace ToDo.WPF.ViewModels
             UpdateCurrentThemeCommand = new UpdateCurrentThemeCommand(settings, this);
         }
 
-        public void UpdateCurrentViewModel(object parameter)
-        {
-            
-        }
     }
 }

@@ -323,8 +323,6 @@ C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\ref\ToDo.WPF.dll
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\ToDo.WPF.pdb
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\ToDo.WPF.genruntimeconfig.cache
-C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\MainHeader.g.cs
-C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\MainHeader.baml
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\TaskCreation.g.cs
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\WpfAnimatedGif.dll
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Controls\TaskCreation.baml

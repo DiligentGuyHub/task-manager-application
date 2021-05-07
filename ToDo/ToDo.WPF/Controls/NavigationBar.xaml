@@ -7,7 +7,7 @@
              xmlns:viewmodels="clr-namespace:ToDo.WPF.ViewModels"
              xmlns:converters="clr-namespace:ToDo.WPF.Converters"
              xmlns:nav="clr-namespace:ToDo.WPF.State.Navigators"
-            d:DataContext="{d:DesignInstance Type=nav:Navigator}"
+             d:DataContext="{d:DesignInstance Type=nav:Navigator}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
