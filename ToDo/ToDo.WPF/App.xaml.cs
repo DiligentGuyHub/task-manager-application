@@ -14,6 +14,7 @@ using ToDo.Domain.Services;
 using ToDo.Domain.Services.AuthenticationServices;
 using ToDo.EntityFramework;
 using ToDo.EntityFramework.Services;
+using ToDo.EntityFramework.Services.Common;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.State.Settings;
@@ -65,7 +66,7 @@ namespace ToDo.WPF
             services.AddSingleton<IDataService<User>, AccountDataService>();
             services.AddSingleton<IAccountService, AccountDataService>();
             services.AddSingleton<IExchangeRateService, ExchangeRateService>();
-            services.AddSingleton<IExchangeRateService, ExchangeRateService>();
+            services.AddSingleton<ITaskService, TaskDataService>();
 
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
@@ -76,7 +77,10 @@ namespace ToDo.WPF
                     services.GetRequiredService<IAuthenticator>()
                 ));
             services.AddSingleton<InboxViewModel>();
-            services.AddSingleton<TodayViewModel>();
+            services.AddSingleton<TodayViewModel>(services => new TodayViewModel(
+                services.GetRequiredService<ITaskService>(),
+                services.GetRequiredService<IAuthenticator>()
+                ));
             services.AddSingleton<SettingsViewModel>();
 
             // HomeViewModel

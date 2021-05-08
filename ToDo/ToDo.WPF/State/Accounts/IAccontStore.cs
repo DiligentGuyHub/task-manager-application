@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Domain.Models;
 
-namespace ToDo.Domain.Services
+namespace ToDo.WPF.State.Accounts
 {
-    public interface ITaskService : IDataService<Models.Task>
+    public interface IAccontStore
     {
-
+        User CurrentAccount { get; set; }
     }
 }

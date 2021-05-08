@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ToDo.Domain.Models;
 using ToDo.Domain.Services;
 using ToDo.WPF.Models;
@@ -40,8 +41,9 @@ namespace ToDo.WPF.State.Authenticators
             {
                 CurrentUser = await _authenticationService.Login(username, password);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 success = false;
             }
             return success;

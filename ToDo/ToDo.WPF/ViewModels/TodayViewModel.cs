@@ -5,11 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Threading;
+using ToDo.Domain.Services;
+using ToDo.WPF.Commands;
+using ToDo.WPF.State.Authenticators;
 
 namespace ToDo.WPF.ViewModels
 {
     public class TodayViewModel : ViewModelBase
     {
+        private ToDo.Domain.Models.Task _selectedTask;
+        public ToDo.Domain.Models.Task SelectedTask 
+        {
+            get
+            {
+                return _selectedTask;
+            }
+            set
+            {
+                _selectedTask = value;
+                OnPropertyChanged(nameof(SelectedTask));
+            }
+        }
+
         private string _task;
         public string Task
         {
@@ -54,8 +71,9 @@ namespace ToDo.WPF.ViewModels
 
         public ICommand CreateTaskCommand { get; set; }
 
-        public TodayViewModel()
+        public TodayViewModel(ITaskService taskService, IAuthenticator authenticator)
         {
+            CreateTaskCommand = new CreateTaskCommand(this, taskService, authenticator);
             actualDay = DateTime.Now.ToString("dd");
             actualWeekDay = DateTime.Now.ToString("dddd");
             StartTimer();

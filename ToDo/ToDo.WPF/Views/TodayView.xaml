@@ -32,7 +32,9 @@
         
         <controls:TaskCreation Grid.Row="1" Margin="10 10" HorizontalContentAlignment="Stretch"/>
         <Grid Grid.Row="2">
-            
+            <ListView>
+                
+            </ListView>
         </Grid>
     </Grid>
 </UserControl>
