@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\AccountPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\ExchangeRateCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +45,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\AccountPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\ExchangeRateCard.xaml">
       <SubType>Designer</SubType>
     </Page>

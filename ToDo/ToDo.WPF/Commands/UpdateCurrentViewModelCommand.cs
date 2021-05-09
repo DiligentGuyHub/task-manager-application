@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ToDo.API.Services;
 using ToDo.WPF.State.Navigators;
-using ToDo.WPF.ViewModels;
 using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands

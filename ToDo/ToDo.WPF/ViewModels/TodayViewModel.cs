@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using ToDo.Domain.Services;
 using ToDo.WPF.Commands;
+using ToDo.WPF.State.Accounts;
 using ToDo.WPF.State.Authenticators;
 
 namespace ToDo.WPF.ViewModels
@@ -71,9 +72,9 @@ namespace ToDo.WPF.ViewModels
 
         public ICommand CreateTaskCommand { get; set; }
 
-        public TodayViewModel(ITaskService taskService, IAuthenticator authenticator)
+        public TodayViewModel(ITaskService taskService, IAccountStore accountStore)
         {
-            CreateTaskCommand = new CreateTaskCommand(this, taskService, authenticator);
+            CreateTaskCommand = new CreateTaskCommand(this, taskService, accountStore);
             actualDay = DateTime.Now.ToString("dd");
             actualWeekDay = DateTime.Now.ToString("dddd");
             StartTimer();

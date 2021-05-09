@@ -65,7 +65,8 @@
                 </ComboBox>
                 <!--<Image Width="25" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resources/Gifs/alarm-clock-1.gif"/>-->
             </Grid>
-            <RadioButton Grid.Column="1" Tag="" 
+            <Button Grid.Column="1" Tag="" 
+                    IsDefault="True"
                     BorderBrush="Transparent"
                     Command="{Binding CreateTaskCommand}" 
                     CommandParameter="{Binding SelectedTask}"/>

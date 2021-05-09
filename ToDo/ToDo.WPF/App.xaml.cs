@@ -15,6 +15,7 @@ using ToDo.Domain.Services.AuthenticationServices;
 using ToDo.EntityFramework;
 using ToDo.EntityFramework.Services;
 using ToDo.EntityFramework.Services.Common;
+using ToDo.WPF.State.Accounts;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.State.Settings;
@@ -79,7 +80,7 @@ namespace ToDo.WPF
             services.AddSingleton<InboxViewModel>();
             services.AddSingleton<TodayViewModel>(services => new TodayViewModel(
                 services.GetRequiredService<ITaskService>(),
-                services.GetRequiredService<IAuthenticator>()
+                services.GetRequiredService<IAccountStore>()
                 ));
             services.AddSingleton<SettingsViewModel>();
 
@@ -128,10 +129,11 @@ namespace ToDo.WPF
             //);
             //services.AddSingleton<ToDoViewModelFactory2<SettingsViewModel>, SettingsViewModelFactory>();
 
-            services.AddScoped<INavigator, Navigator>();
-            services.AddScoped<IAuthenticator, Authenticator>();
-            services.AddScoped<ISettings, Settings>();
-            services.AddScoped<MainViewModel>();
+            services.AddSingleton<INavigator, Navigator>();
+            services.AddSingleton<IAuthenticator, Authenticator>();
+            services.AddSingleton<IAccountStore, AccountStore>();
+            services.AddSingleton<ISettings, Settings>();
+            services.AddSingleton<MainViewModel>();
 
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
 

@@ -7,8 +7,9 @@ using ToDo.Domain.Models;
 
 namespace ToDo.WPF.State.Accounts
 {
-    public interface IAccontStore
+    public interface IAccountStore
     {
         User CurrentAccount { get; set; }
+        event Action StateChanged;
     }
 }
