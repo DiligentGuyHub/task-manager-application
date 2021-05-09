@@ -15,5 +15,7 @@ namespace ToDo.WPF.State.Authenticators
         Task<RegistrationResult> Register(string email, string username, string password, string confirmpassword);
         Task<bool> Login(string username, string password);
         void Logout();
+        event Action StateChanged;
+
     }
 }

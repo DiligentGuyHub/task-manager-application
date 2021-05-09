@@ -11,7 +11,7 @@ using ToDo.WPF.State.Accounts;
 
 namespace ToDo.WPF.State.Authenticators
 {
-    public class Authenticator : ObservableObject, IAuthenticator
+    public class Authenticator : IAuthenticator
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IAccountStore _accountStore;
@@ -30,12 +30,12 @@ namespace ToDo.WPF.State.Authenticators
             private set 
             {
                 _accountStore.CurrentAccount = value;
-                OnPropertyChanged(nameof(CurrentUser));
-                OnPropertyChanged(nameof(IsLoggedIn));
+                StateChanged?.Invoke();
             }
         }
-        event Action StateChanged;
         public bool IsLoggedIn => CurrentUser != null;
+
+        public event Action StateChanged;
 
         public async Task<bool> Login(string username, string password)
         {

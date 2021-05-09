@@ -13,20 +13,35 @@ namespace ToDo.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public INavigator Navigator { get; set; }
-        public IToDoViewModelFactory ViewModelFactory { get; }
-        public IAuthenticator Authenticator { get; }
+        private IToDoViewModelFactory _viewModelFactory;
+        private INavigator _navigator;
+        private IAuthenticator _authenticator;
         public ICommand UpdateCurrentViewModelCommand { get; }
 
+        public bool IsLoggedIn => _authenticator.IsLoggedIn;
+        public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
 
         public MainViewModel(INavigator navigator, IToDoViewModelFactory viewModelFactory, IAuthenticator authenticator)
         {
-            Navigator = navigator;
-            ViewModelFactory = viewModelFactory;
-            Authenticator = authenticator;
+            _navigator = navigator;
+            _viewModelFactory = viewModelFactory;
+            _authenticator = authenticator;
+
+            _navigator.StateChanged += Navigator_StateChanged;
+            _authenticator.StateChanged += Authenticator_StateChanged;
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
             UpdateCurrentViewModelCommand.Execute(ViewType.Login);
+        }
+
+        private void Authenticator_StateChanged()
+        {
+            OnPropertyChanged(nameof(IsLoggedIn));
+        }
+
+        private void Navigator_StateChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

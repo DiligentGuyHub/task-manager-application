@@ -20,10 +20,10 @@
             <Grid.Style>
                 <Style TargetType="Grid">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Authenticator.IsLoggedIn}" Value="False">
+                        <DataTrigger Binding="{Binding IsLoggedIn}" Value="False">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Authenticator.IsLoggedIn}" Value="True">
+                        <DataTrigger Binding="{Binding IsLoggedIn}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                             <Setter Property="Width" Value="200"/>
                         </DataTrigger>
@@ -33,7 +33,7 @@
             <controls:NavigationBar/>
         </Grid>
         
-        <ContentControl Grid.Column="1" Content="{Binding Navigator.CurrentViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}"/>
 
         <!--<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
            

@@ -12,7 +12,7 @@ using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.State.Navigators
 {
-    public class Navigator : ViewModelBase, INavigator 
+    public class Navigator : INavigator 
     {
         private ViewModelBase _currentViewModel;
 
@@ -25,8 +25,9 @@ namespace ToDo.WPF.State.Navigators
             set
             {
                 _currentViewModel = value;
-                OnPropertyChanged(nameof(CurrentViewModel));
+                StateChanged?.Invoke();
             }
         }
+        public event Action StateChanged;
     }
 }
