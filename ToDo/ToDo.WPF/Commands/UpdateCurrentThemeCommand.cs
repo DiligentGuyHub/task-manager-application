@@ -11,7 +11,7 @@ using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands
 {
-    public class UpdateCurrentThemeCommand : ICommand
+    public class UpdateCurrentThemeCommand : AsyncCommandBase
     {
         private readonly ISettings _settings;
         private readonly SettingsViewModel _settingsViewModel;
@@ -21,15 +21,7 @@ namespace ToDo.WPF.Commands
             _settings = settings;
             _settingsViewModel = settingsViewModel;
         }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             App.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Clear();

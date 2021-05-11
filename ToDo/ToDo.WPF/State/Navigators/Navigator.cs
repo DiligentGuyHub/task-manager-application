@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ToDo.WPF.Commands;
-using ToDo.WPF.Models;
 using ToDo.WPF.ViewModels;
 using ToDo.WPF.ViewModels.Factories;
 

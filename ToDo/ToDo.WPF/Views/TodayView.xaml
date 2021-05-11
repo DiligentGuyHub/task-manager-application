@@ -31,10 +31,6 @@
         </Grid>
         
         <controls:TaskCreation Grid.Row="1" Margin="10 10" HorizontalContentAlignment="Stretch"/>
-        <Grid Grid.Row="2">
-            <ListView>
-                
-            </ListView>
-        </Grid>
+        <controls:TaskSummary Grid.Row="2" DataContext="{Binding TaskSummaryViewModel}"/>
     </Grid>
 </UserControl>

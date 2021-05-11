@@ -10,6 +10,8 @@ namespace ToDo.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        public TaskSummaryViewModel TaskSummaryViewModel { get; }
+
         private string _username;
         public string Username
         {
@@ -68,9 +70,10 @@ namespace ToDo.WPF.ViewModels
         public ExchangeRateListingViewModel ExchangeRateListingViewModel { get; set; }
         public IAuthenticator Authenticator { get; }
 
-        public HomeViewModel(ExchangeRateListingViewModel exchangeRateViewModel, IAuthenticator authenticator)
+        public HomeViewModel(ExchangeRateListingViewModel exchangeRateViewModel, IAuthenticator authenticator, TaskSummaryViewModel taskSummaryViewModel)
         {
             ExchangeRateListingViewModel = exchangeRateViewModel;
+            TaskSummaryViewModel = taskSummaryViewModel;
             Authenticator = authenticator;
             Username = authenticator.CurrentUser.Username;
             actualTime = DateTime.Now.ToString("HH:mm");
@@ -100,11 +103,11 @@ namespace ToDo.WPF.ViewModels
             if (DateTime.Now.Hour > 0 && DateTime.Now.Hour <= 6)
                 actualGreeting = $"Hello, moon rider";
             else if (DateTime.Now.Hour > 6 && DateTime.Now.Hour <= 12)
-                actualGreeting = $"Good morning, dear";
+                actualGreeting = $"Good morning, {Username}";
             else if (DateTime.Now.Hour > 12 && DateTime.Now.Hour <= 16)
-                actualGreeting = $"Good afternoon, dear";
+                actualGreeting = $"Good afternoon, {Username}";
             else if (DateTime.Now.Hour > 16 && DateTime.Now.Hour < 24)
-                actualGreeting = $"Good evening, dear";
+                actualGreeting = $"Good evening, {Username}";
         }
     }
 }

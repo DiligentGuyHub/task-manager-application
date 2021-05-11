@@ -24,8 +24,43 @@
         <Button Grid.Row="0" Background="{StaticResource BrushPrimary_1}"
                 HorizontalContentAlignment="Left"
                 Command="{Binding UpdateCurrentViewModelCommand}"
-                CommandParameter="{x:Static nav:ViewType.Settings}">
-            <TextBlock Padding="10" FontSize="24" Text="Get Done" Foreground="{StaticResource BrushForeground}"/>
+                CommandParameter="{x:Static nav:ViewType.Settings}"
+                Content="Get it done">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="{StaticResource BrushForeground}"/>
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid Background="{StaticResource BrushPrimary_1}">
+                                    <TextBlock Padding="{TemplateBinding Padding}"
+                                               FontSize="{TemplateBinding FontSize}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               Text="{TemplateBinding Content}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="{StaticResource ColorHover}" Duration="0:0:0.025" Storyboard.TargetProperty="Background.Color"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="{StaticResource ColorPrimary_2}" Duration="0:0:0.025" Storyboard.TargetProperty="Background.Color"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
         </Button>
 
         <local:AccountPanel Grid.Row="1"/>
@@ -42,28 +77,28 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
+                <!--<RowDefinition Height="35"/>-->
             </Grid.RowDefinitions>
             <!-- to declare where this command is defined we should go to app.xaml.cs and window.DataContext = MainViewModel() -->
             <RadioButton Grid.Row="0" Content="Home" 
-                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:HomeViewModel}}" 
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:HomeViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}"
                          CommandParameter="{x:Static nav:ViewType.Home}"/>
-            <RadioButton Grid.Row="1" Content="Inbox" 
-                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:InboxViewModel}}" 
+            <!--<RadioButton Grid.Row="1" Content="Inbox" 
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:InboxViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Inbox}">
-            </RadioButton>
-            <RadioButton Grid.Row="2" Content="Today"  
-                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:TodayViewModel}}" 
+            </RadioButton>-->
+            <RadioButton Grid.Row="1" Content="Today"  
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:TodayViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}"
                          CommandParameter="{x:Static nav:ViewType.Today}"/>
-            <RadioButton Grid.Row="3" Content="Week"
-                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:WeekViewModel}}" 
+            <RadioButton Grid.Row="2" Content="Week"
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:WeekViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Week}"/>
-            <RadioButton Grid.Row="4" Content="Month"
-                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:MonthViewModel}}" 
+            <RadioButton Grid.Row="3" Content="Month"
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualValueToParameterConverter}, ConverterParameter={x:Type viewmodels:MonthViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}"
                          CommandParameter="{x:Static nav:ViewType.Month}"/>
         </Grid>

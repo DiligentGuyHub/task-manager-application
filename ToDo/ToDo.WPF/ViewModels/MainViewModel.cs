@@ -19,6 +19,20 @@ namespace ToDo.WPF.ViewModels
         public ICommand UpdateCurrentViewModelCommand { get; }
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
+
+        private string _username;
+        public string Username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
+            }
+        }
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
 
         public MainViewModel(INavigator navigator, IToDoViewModelFactory viewModelFactory, IAuthenticator authenticator)
@@ -37,6 +51,11 @@ namespace ToDo.WPF.ViewModels
         private void Authenticator_StateChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+            if(IsLoggedIn)
+            {
+                Username = _authenticator.CurrentUser.Username;
+            }
+
         }
 
         private void Navigator_StateChanged()

@@ -10,19 +10,16 @@ namespace ToDo.WPF.ViewModels.Factories
     public class ToDoViewModelFactory : IToDoViewModelFactory
     {
         private readonly CreateViewModel<HomeViewModel> _createHomeViewModel;
-        private readonly CreateViewModel<InboxViewModel> _createInboxViewModel;
         private readonly CreateViewModel<TodayViewModel> _createTodayViewModel;
         private readonly CreateViewModel<LoginViewModel> _createLoginViewModel;
         private readonly CreateViewModel<SettingsViewModel> _createSettingsViewModel;
 
         public ToDoViewModelFactory(CreateViewModel<HomeViewModel> createHomeViewModel,
-                                    CreateViewModel<InboxViewModel> createInboxViewModel,
                                     CreateViewModel<LoginViewModel> createLoginViewModel,
                                     CreateViewModel<SettingsViewModel> createSettingsViewModel, 
                                     CreateViewModel<TodayViewModel> createTodayViewModel)
         {
             _createHomeViewModel = createHomeViewModel;
-            _createInboxViewModel = createInboxViewModel;
             _createLoginViewModel = createLoginViewModel;
             _createSettingsViewModel = createSettingsViewModel;
             _createTodayViewModel = createTodayViewModel;
@@ -38,8 +35,6 @@ namespace ToDo.WPF.ViewModels.Factories
                     return _createSettingsViewModel();
                 case ViewType.Home:
                     return _createHomeViewModel();
-                case ViewType.Inbox:
-                    return _createInboxViewModel();
                 case ViewType.Today:
                     return _createTodayViewModel();
                 case ViewType.Week:

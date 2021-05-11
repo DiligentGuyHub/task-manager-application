@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ToDo.WPF.Views
+namespace ToDo.WPF.Controls
 {
     /// <summary>
-    /// Interaction logic for InboxView.xaml
+    /// Interaction logic for TaskSummary.xaml
     /// </summary>
-    public partial class InboxView : UserControl
+    public partial class TaskSummary : UserControl
     {
-        public InboxView()
+        public TaskSummary()
         {
             InitializeComponent();
+        }
+
+        private void ComboBox_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

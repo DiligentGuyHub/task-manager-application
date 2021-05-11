@@ -22,12 +22,15 @@ namespace ToDo.Domain.Services.AuthenticationServices
         public async Task<User> Login(string username, string password)
         {
             User storedAccount = await _accountService.GetByUsername(username);
-
+            if(storedAccount == null)
+            {
+                throw new InvalidLoginOrPasswordException(username, password);
+            }
             PasswordVerificationResult passwordVerificationResult = _passwordHasher.VerifyHashedPassword(storedAccount.PasswordHash, password);
 
             if (passwordVerificationResult != PasswordVerificationResult.Success)
             {
-                throw new InvalidPasswordException(username, password);
+                throw new InvalidLoginOrPasswordException(username, password);
             }
 
             return storedAccount;

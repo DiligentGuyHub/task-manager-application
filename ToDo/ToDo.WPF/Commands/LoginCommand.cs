@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ToDo.Domain.Exceptions;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.ViewModels;
@@ -11,7 +12,7 @@ using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands
 {
-    public class LoginCommand : ICommand
+    public class LoginCommand : AsyncCommandBase
     {
         private readonly LoginViewModel _loginViewModel;
         private readonly IRenavigator _renavigator;
@@ -24,20 +25,18 @@ namespace ToDo.WPF.Commands
             _renavigator = renavigator;
         }
 
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
-            return true;
-        }
-
-        public async void Execute(object parameter)
-        {
-            bool success = await _authenticator.Login(_loginViewModel.Username, parameter.ToString());
-
-            if (success)
+            try
             {
+                await _authenticator.Login(_loginViewModel.Username, parameter.ToString());
+
                 _renavigator.Renavigate();
+                _loginViewModel.ErrorMessage = "";
+            }
+            catch(InvalidLoginOrPasswordException)
+            {
+                _loginViewModel.ErrorMessage = "Username and/or password is incorrect.";
             }
         }
     }

@@ -9,9 +9,8 @@ using ToDo.WPF.ViewModels.Factories;
 
 namespace ToDo.WPF.Commands
 {
-    public class UpdateCurrentViewModelCommand : ICommand
+    public class UpdateCurrentViewModelCommand : AsyncCommandBase
     {
-        public event EventHandler CanExecuteChanged;
         private readonly INavigator _navigator;
         private readonly IToDoViewModelFactory _viewModelFactory;
 
@@ -20,13 +19,7 @@ namespace ToDo.WPF.Commands
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
         }
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             if (parameter is ViewType)
             {

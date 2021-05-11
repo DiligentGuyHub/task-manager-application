@@ -19,6 +19,7 @@ using ToDo.WPF.State.Accounts;
 using ToDo.WPF.State.Authenticators;
 using ToDo.WPF.State.Navigators;
 using ToDo.WPF.State.Settings;
+using ToDo.WPF.State.Tasks;
 using ToDo.WPF.ViewModels;
 using ToDo.WPF.ViewModels.Factories;
 
@@ -75,14 +76,18 @@ namespace ToDo.WPF
             services.AddSingleton<HomeViewModel>(services => new HomeViewModel(
                 ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
                     services.GetRequiredService<IExchangeRateService>()),
-                    services.GetRequiredService<IAuthenticator>()
+                    services.GetRequiredService<IAuthenticator>(),
+                    services.GetRequiredService<TaskSummaryViewModel>()
                 ));
-            services.AddSingleton<InboxViewModel>();
+            services.AddSingleton<TaskSummaryViewModel>();
             services.AddSingleton<TodayViewModel>(services => new TodayViewModel(
                 services.GetRequiredService<ITaskService>(),
-                services.GetRequiredService<IAccountStore>()
+                services.GetRequiredService<IAccountStore>(),
+                services.GetRequiredService<TaskSummaryViewModel>(),
+                services.GetRequiredService<MessageViewModel>()
                 ));
             services.AddSingleton<SettingsViewModel>();
+            services.AddSingleton<MessageViewModel>();
 
             // HomeViewModel
             services.AddSingleton<CreateViewModel<HomeViewModel>>(services =>
@@ -90,11 +95,6 @@ namespace ToDo.WPF
                 return () => services.GetRequiredService<HomeViewModel>();
                 //return () => new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
                 //    services.GetRequiredService<IExchangeRateService>()));
-            });
-            // InboxViewModel
-            services.AddSingleton<CreateViewModel<InboxViewModel>>(services =>
-            {
-                return () => services.GetRequiredService<InboxViewModel>();
             });
             // TodayViewModel
             services.AddSingleton<CreateViewModel<TodayViewModel>>(services =>
@@ -112,7 +112,8 @@ namespace ToDo.WPF
             {
                 return () => new LoginViewModel(
                     services.GetRequiredService<IAuthenticator>(),
-                    services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>());
+                    services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>(),
+                    services.GetRequiredService<MessageViewModel>());
             });
 
 
@@ -132,6 +133,7 @@ namespace ToDo.WPF
             services.AddSingleton<INavigator, Navigator>();
             services.AddSingleton<IAuthenticator, Authenticator>();
             services.AddSingleton<IAccountStore, AccountStore>();
+            services.AddSingleton<TaskStore>();
             services.AddSingleton<ISettings, Settings>();
             services.AddSingleton<MainViewModel>();
 

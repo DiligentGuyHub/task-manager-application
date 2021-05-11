@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using ToDo.Domain.Models;
 using ToDo.Domain.Services;
-using ToDo.WPF.Models;
 using ToDo.WPF.State.Accounts;
 
 namespace ToDo.WPF.State.Authenticators
@@ -21,13 +20,13 @@ namespace ToDo.WPF.State.Authenticators
             _authenticationService = authenticationService;
             _accountStore = accountStore;
         }
-        public User CurrentUser 
+        public User CurrentUser
         {
             get
             {
                 return _accountStore.CurrentAccount;
             }
-            private set 
+            private set
             {
                 _accountStore.CurrentAccount = value;
                 StateChanged?.Invoke();
@@ -37,19 +36,9 @@ namespace ToDo.WPF.State.Authenticators
 
         public event Action StateChanged;
 
-        public async Task<bool> Login(string username, string password)
+        public async System.Threading.Tasks.Task Login(string username, string password)
         {
-            bool success = true;
-            try
-            {
-                CurrentUser = await _authenticationService.Login(username, password);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                success = false;
-            }
-            return success;
+            CurrentUser = await _authenticationService.Login(username, password);
         }
         public void Logout()
         {

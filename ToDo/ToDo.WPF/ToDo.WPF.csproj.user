@@ -25,13 +25,13 @@
     <Compile Update="Controls\TaskCreation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\TaskSummary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\HomeView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\InboxView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MonthView.xaml.cs">
@@ -63,6 +63,9 @@
     <Page Update="Controls\TaskCreation.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\TaskSummary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -82,9 +85,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\HomeView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\InboxView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MonthView.xaml">

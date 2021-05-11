@@ -14,19 +14,8 @@ namespace ToDo.WPF.ViewModels
 {
     public class TodayViewModel : ViewModelBase
     {
-        private ToDo.Domain.Models.Task _selectedTask;
-        public ToDo.Domain.Models.Task SelectedTask 
-        {
-            get
-            {
-                return _selectedTask;
-            }
-            set
-            {
-                _selectedTask = value;
-                OnPropertyChanged(nameof(SelectedTask));
-            }
-        }
+        // PROPERTIES START
+        public TaskSummaryViewModel TaskSummaryViewModel { get; }
 
         private string _task;
         public string Task
@@ -70,16 +59,6 @@ namespace ToDo.WPF.ViewModels
             }
         }
 
-        public ICommand CreateTaskCommand { get; set; }
-
-        public TodayViewModel(ITaskService taskService, IAccountStore accountStore)
-        {
-            CreateTaskCommand = new CreateTaskCommand(this, taskService, accountStore);
-            actualDay = DateTime.Now.ToString("dd");
-            actualWeekDay = DateTime.Now.ToString("dddd");
-            StartTimer();
-        }
-
         private string _actualDay;
         public string actualDay
         {
@@ -121,6 +100,23 @@ namespace ToDo.WPF.ViewModels
                 OnPropertyChanged(nameof(timer));
             }
         }
+        public MessageViewModel ErrorMessageViewModel { get; }
+
+        public string ErrorMessage { set => ErrorMessageViewModel.Message = value; }
+        // PROPERTIES END
+
+        public ICommand CreateTaskCommand { get; set; }
+
+        public TodayViewModel(ITaskService taskService, IAccountStore accountStore, TaskSummaryViewModel taskViewModel, MessageViewModel errorMessageViewModel)
+        {
+            CreateTaskCommand = new CreateTaskCommand(this, taskService, accountStore);
+            actualDay = DateTime.Now.ToString("dd");
+            actualWeekDay = DateTime.Now.ToString("dddd");
+            StartTimer();
+            TaskSummaryViewModel = taskViewModel;
+            ErrorMessageViewModel = errorMessageViewModel;
+        }
+
         private void StartTimer()
         {
             timer = new DispatcherTimer

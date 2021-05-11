@@ -25,11 +25,14 @@ namespace ToDo.WPF.ViewModels
                 OnPropertyChanged(nameof(Username));
             }
         }
+        public MessageViewModel ErrorMessageViewModel { get; }
 
+        public string ErrorMessage { set => ErrorMessageViewModel.Message = value; }
         public ICommand LoginCommand { get; }
-        public LoginViewModel(IAuthenticator authenticator, IRenavigator renavigator)
+        public LoginViewModel(IAuthenticator authenticator, IRenavigator renavigator, MessageViewModel errorMessageViewModel)
         {
             LoginCommand = new LoginCommand(authenticator, this, renavigator);
+            ErrorMessageViewModel = errorMessageViewModel;
         }
 
     }

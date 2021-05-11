@@ -13,14 +13,12 @@ using ToDo.WPF.ViewModels;
 
 namespace ToDo.WPF.Commands
 {
-    public class CreateTaskCommand : ICommand
+    public class CreateTaskCommand : AsyncCommandBase
     {
-        private readonly ITaskService _taskService;
-        private readonly IAccountStore _accountStore;
+        private ITaskService _taskService;
+        private IAccountStore _accountStore;
+        private TodayViewModel _todayViewModel;
 
-        private TodayViewModel _todayViewModel { get; set; }
-
-        public event EventHandler CanExecuteChanged;
 
         public CreateTaskCommand(TodayViewModel todayViewModel, ITaskService taskService, IAccountStore accountStore)
         {
@@ -28,38 +26,34 @@ namespace ToDo.WPF.Commands
             _taskService = taskService;
             _accountStore = accountStore;
         }
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public async void Execute(object parameter)
+        public override async System.Threading.Tasks.Task ExecuteAsync(object parameter)
         {
             try
             {
-                if(_todayViewModel.Task != "" && _todayViewModel.Category != "" && _todayViewModel.Priority != "")
-                {
-                    ToDo.Domain.Models.Task task = await _taskService.Create(new ToDo.Domain.Models.Task
-                    {
-                        UserId = _accountStore.CurrentAccount.Id,
-                        Header = _todayViewModel.Task,
-                        Priority = _todayViewModel.Priority,
-                        Category = _todayViewModel.Category,
-                        Description = "",
-                        Deadline = DateTime.Now,
-                        isCompleted = false,
-                        Images = null,
-                        Files = null,
-                        Subtasks = null
-                    });
-                    // ???
-                    _accountStore.CurrentAccount.Tasks.Append(task);
-                }
+                
+                    //ToDo.Domain.Models.Task task = await _taskService.Create(new ToDo.Domain.Models.Task
+                    //{
+                    //    UserId = _accountStore.CurrentAccount.Id,
+                    //    Header = _todayViewModel.Task,
+                    //    Priority = _todayViewModel.Priority,
+                    //    Category = _todayViewModel.Category,
+                    //    Description = "",
+                    //    Deadline = DateTime.Now,
+                    //    isCompleted = false,
+                    //    Images = null,
+                    //    Files = null,
+                    //    Subtasks = null
+                    //});
+                    //// ???
+                    //_accountStore.CurrentAccount.Tasks.Append(task);
+                    User user = await _taskService.CreateTask(_accountStore.CurrentAccount, _todayViewModel.Task, _todayViewModel.Category, _todayViewModel.Priority);
+
+                    _accountStore.CurrentAccount = user;
+                    _todayViewModel.ErrorMessage = "";
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show(e.Message);
+                _todayViewModel.ErrorMessage = "All fields must be specified to create a task";
             }
         }
     }
