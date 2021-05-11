@@ -55,7 +55,7 @@ namespace ToDo.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ToDo.WPF;component/controls/taskcreation.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ToDo.WPF;V1.0.0.0;component/controls/taskcreation.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\TaskCreation.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

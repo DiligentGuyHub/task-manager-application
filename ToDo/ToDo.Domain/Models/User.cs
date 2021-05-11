@@ -16,7 +16,7 @@ namespace ToDo.Domain.Models
         public string Role { get; set; }
         public bool Status { get; set; }
         public DateTime DateJoined { get; set; }
-        public ICollection<Task> Tasks { get; set; }    
+        public ObservableCollection<Task> Tasks { get; set; }    
 
     }
 }

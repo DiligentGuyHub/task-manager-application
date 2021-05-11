@@ -109,7 +109,6 @@
                         <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
-
                     <TextBlock
                         Grid.Column="0"
                         FontSize="16"
@@ -125,9 +124,20 @@
                             Grid.Column="1"
                             Background="Transparent"
                             BorderBrush="Transparent"
+                            BorderThickness="0"
                             FontSize="14"
                             Foreground="{StaticResource BrushForeground}"
-                            Password="{Binding Password}" />
+                            Password="{Binding Password}">
+                            <components:BindablePasswordBox.Style>
+                                <Style TargetType="components:BindablePasswordBox">
+                                    <Style.Setters>
+                                        <Setter Property="Foreground" Value="{StaticResource BrushForeground}" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderThickness" Value="0,0,0,0" />
+                                    </Style.Setters>
+                                </Style>
+                            </components:BindablePasswordBox.Style>
+                        </components:BindablePasswordBox>
                     </Border>
                 </Grid>
 
@@ -182,6 +192,7 @@
                     HorizontalAlignment="Center"
                     Background="Transparent"
                     BorderBrush="Transparent"
+                    Command="{Binding ViewLoginCommand}"
                     Content="Already have an account"
                     FontSize="16"
                     Foreground="{StaticResource BrushForeground}" />

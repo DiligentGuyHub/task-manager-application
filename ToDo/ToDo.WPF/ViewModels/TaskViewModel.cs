@@ -10,6 +10,19 @@ namespace ToDo.WPF.ViewModels
 {
     public class TaskViewModel : ViewModelBase
     {
+        private int _id;
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
         private string header;
         public string Header
         {
@@ -18,6 +31,12 @@ namespace ToDo.WPF.ViewModels
             {
                 header = value;
                 OnPropertyChanged(nameof(Header));
+                //using (ToDoDbContext context = _contextFactory.CreateDbContext())
+                //{
+                //    context.Tasks.Update(context.Tasks.FirstOrDefault(
+                //        a => a.Header == Header).Id, 
+                //        new Task(){Hea})
+                //}
             }
         }
         public string Category { get; set; }
@@ -56,8 +75,9 @@ namespace ToDo.WPF.ViewModels
             }
         }
         public string PriorityStatus { get; set; }
-        public TaskViewModel(string header, DateTime deadline, string category, string priority, bool iscompleted, string description)
+        public TaskViewModel(int id, string header, DateTime deadline, string category, string priority, bool iscompleted, string description)
         {
+            Id = id;
             Header = header;
             Deadline = deadline;
             Category = category;
