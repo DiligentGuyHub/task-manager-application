@@ -92,12 +92,18 @@ namespace ToDo.WPF
                     {
                         return () => services.GetRequiredService<SettingsViewModel>();
                     });
+                    services.AddSingleton<CreateViewModel<RegisterViewModel>>(services =>
+                    {
+                        return () => new RegisterViewModel();
+                    });
                     services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>();
+                    services.AddSingleton<ViewModelDelegateRenavigator<RegisterViewModel>>();
                     services.AddSingleton<CreateViewModel<LoginViewModel>>(services =>
                     {
                         return () => new LoginViewModel(
                             services.GetRequiredService<IAuthenticator>(),
                             services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>(),
+                            services.GetRequiredService<ViewModelDelegateRenavigator<RegisterViewModel>>(),
                             services.GetRequiredService<MessageViewModel>());
                     });
 

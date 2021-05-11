@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mVVdenPt4wpSPDk49a33Wi8oAYxP7d+JnQbJrI85qDY0MRRTIpiHLmMaSt8cDD3AZor5RAexy1rU4kk8jxpjHQ==",
+  "dgSpecHash": "AMNmF4DrWzHeMqFSzCJCaudzbTt6E+quz9BOURxZokpuvMV+sKX5ioMYkG9ExYjUAETtB54xru0eTI774wd4aA==",
   "success": true,
   "projectFilePath": "C:\\Users\\longr\\OneDrive\\Documents\\C#\\WPF\\ToDo\\ToDo.WPF\\ToDo.WPF.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "C:\\Users\\longr\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\longr\\.nuget\\packages\\passwordboxmvvm\\1.0.5\\passwordboxmvvm.1.0.5.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\longr\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",

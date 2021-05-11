@@ -1,42 +1,48 @@
-﻿<Application x:Class="ToDo.WPF.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ToDo.WPF"
-             xmlns:viewmodels="clr-namespace:ToDo.WPF.ViewModels"
-             xmlns:views="clr-namespace:ToDo.WPF.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+﻿<Application
+    x:Class="ToDo.WPF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ToDo.WPF"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:viewmodels="clr-namespace:ToDo.WPF.ViewModels"
+    xmlns:views="clr-namespace:ToDo.WPF.Views">
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Classic.xaml"/>
-                <ResourceDictionary Source="/Styles/NavigationBar.xaml"/>
-                <ResourceDictionary Source="/Styles/Settings.xaml"/>
+                <ResourceDictionary Source="/Styles/Classic.xaml" />
+                <ResourceDictionary Source="/Styles/NavigationBar.xaml" />
+                <ResourceDictionary Source="/Styles/Settings.xaml" />
                 <!--<materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />-->
                 <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-                <views:HomeView/>
+                <views:HomeView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:TodayViewModel}">
-                <views:TodayView/>
+                <views:TodayView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:WeekViewModel}">
-                <views:WeekView/>
+                <views:WeekView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:MonthViewModel}">
-                <views:MonthView/>
+                <views:MonthView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
-                <views:SettingsView/>
+                <views:SettingsView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
-                <views:LoginView LoginCommand="{Binding LoginCommand}"/>
+                <views:LoginView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
+                <views:RegisterView />
             </DataTemplate>
 
         </ResourceDictionary>

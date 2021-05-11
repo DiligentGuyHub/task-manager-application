@@ -736,6 +736,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PasswordBoxMVVM/1.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/PasswordBoxMVVM.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/PasswordBoxMVVM.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2941,6 +2953,18 @@
         "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "PasswordBoxMVVM/1.0.5": {
+      "sha512": "NeUoGEBKjrYotXuLdSmEsglUhofPNgf6Hd6g7R64R+Iail4+ANzkNRsrcq/euYMlurFkC7MUtUJvesdU20Cycg==",
+      "type": "package",
+      "path": "passwordboxmvvm/1.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/PasswordBoxMVVM.dll",
+        "passwordboxmvvm.1.0.5.nupkg.sha512",
+        "passwordboxmvvm.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6250,6 +6274,7 @@
       "MaterialDesignThemes >= 4.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.5",
       "Microsoft.Extensions.Hosting >= 5.0.0",
+      "PasswordBoxMVVM >= 1.0.5",
       "ToDo.API >= 1.0.0",
       "ToDo.Domain >= 1.0.0",
       "ToDo.EntityFramework >= 1.0.0",
@@ -6318,6 +6343,10 @@
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "PasswordBoxMVVM": {
+            "target": "Package",
+            "version": "[1.0.5, )"
           },
           "WpfAnimatedGif": {
             "target": "Package",
