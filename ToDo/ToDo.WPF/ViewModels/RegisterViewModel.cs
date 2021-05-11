@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ToDo.WPF.Commands;
+using ToDo.WPF.State.Authenticators;
+using ToDo.WPF.State.Navigators;
 
 namespace ToDo.WPF.ViewModels
 {
@@ -50,6 +53,7 @@ namespace ToDo.WPF.ViewModels
         }
 
         private string _confirmPassword;
+
         public string ConfirmPassword
         {
             get
@@ -65,10 +69,13 @@ namespace ToDo.WPF.ViewModels
         public ICommand RegisterCommand { get; }
         public ICommand ViewLoginCommand { get; }
         public MessageViewModel ErrorMessageViewModel { get; }
+        public string ErrorMessage { set => ErrorMessageViewModel.Message = value; }
 
-        public RegisterViewModel()
+        public RegisterViewModel(IAuthenticator authenticator, IRenavigator registerRenavigator, IRenavigator loginRenavigator)
         {
             ErrorMessageViewModel = new MessageViewModel();
+            ViewLoginCommand = new RenavigateCommand(loginRenavigator);
+            RegisterCommand = new RegisterCommand(this, authenticator, registerRenavigator);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace ToDo.WPF
             // transient - different instance everytime
             // scoped - one instance per scope
             return Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(c=>
+                .ConfigureAppConfiguration(c =>
                 {
                     c.AddJsonFile("appsettings.json");
                 })
@@ -92,9 +92,15 @@ namespace ToDo.WPF
                     {
                         return () => services.GetRequiredService<SettingsViewModel>();
                     });
+
+                    services.AddSingleton<ViewModelDelegateRenavigator<LoginViewModel>>();
                     services.AddSingleton<CreateViewModel<RegisterViewModel>>(services =>
                     {
-                        return () => new RegisterViewModel();
+                        return () => new RegisterViewModel(
+                            services.GetRequiredService<IAuthenticator>(),
+                            services.GetRequiredService<ViewModelDelegateRenavigator<LoginViewModel>>(),
+                            services.GetRequiredService<ViewModelDelegateRenavigator<LoginViewModel>>()
+                            );
                     });
                     services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>();
                     services.AddSingleton<ViewModelDelegateRenavigator<RegisterViewModel>>();

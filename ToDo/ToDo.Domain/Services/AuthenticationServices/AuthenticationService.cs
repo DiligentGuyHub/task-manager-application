@@ -40,7 +40,7 @@ namespace ToDo.Domain.Services.AuthenticationServices
         {
             RegistrationResult result = RegistrationResult.Success;
 
-            if (password == confirmepassword)
+            if (password != confirmepassword)
             {
                 result = RegistrationResult.PasswordsDoNotMatch;
             }
