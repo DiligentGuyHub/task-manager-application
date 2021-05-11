@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NbrbAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -30,116 +33,96 @@ namespace ToDo.WPF
     /// </summary>
     public partial class App : Application
     {
-        protected override async void OnStartup(StartupEventArgs e)
+        private readonly IHost _host;
+        public App()
         {
-            IServiceProvider serviceProvider = CreateServiceProvider();
-            IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
-
-            //await authentication.Login("test", "test");
-
-            //IExchangeRateService exchangeRateService = serviceProvider.GetRequiredService<IExchangeRateService>();
-
-            //new ExchangeRateService().GetExchangeRate(RateType.USD).ContinueWith((task) =>
-            //{ 
-            //    var rate = task.Result; 
-            //});
-            Window window = serviceProvider.GetRequiredService<MainWindow>();
-            window.Show();
-
-            //using (IServiceScope scope = serviceProvider.CreateScope())
-            //{
-            //    var differentViewModel = scope.ServiceProvider.GetRequiredService<MainViewModel>();
-            //    var equal = differentViewModel == window.DataContext;
-            //}
-
-            base.OnStartup(e);
+            // for config + sql connection string + migration
+            _host = CreateHostBuilder().Build();
         }
-
-        private IServiceProvider CreateServiceProvider()
+        public static IHostBuilder CreateHostBuilder(string[] args = null)
         {
             // singleton - one instance per application
             // transient - different instance everytime
             // scoped - one instance per scope
-            IServiceCollection services = new ServiceCollection();
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(c=>
+                {
+                    c.AddJsonFile("appsettings.json");
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    // to not depend on implementations -> only interfaces matter
+                    string connectionString = context.Configuration.GetConnectionString("default");
+                    services.AddDbContext<ToDoDbContext>(o => o.UseSqlServer(connectionString));
+                    services.AddSingleton<ToDoDbContextFactory>(new ToDoDbContextFactory(connectionString));
+                    services.AddSingleton<IAuthenticationService, AuthenticationService>();
+                    services.AddSingleton<IDataService<User>, AccountDataService>();
+                    services.AddSingleton<IAccountService, AccountDataService>();
+                    services.AddSingleton<IExchangeRateService, ExchangeRateService>();
+                    services.AddSingleton<ITaskService, TaskDataService>();
 
-            // to not depend on implementations -> only interfaces matter
-            services.AddSingleton<ToDoDbContextFactory>();
-            services.AddSingleton<IAuthenticationService, AuthenticationService>();
-            services.AddSingleton<IDataService<User>, AccountDataService>();
-            services.AddSingleton<IAccountService, AccountDataService>();
-            services.AddSingleton<IExchangeRateService, ExchangeRateService>();
-            services.AddSingleton<ITaskService, TaskDataService>();
+                    services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-            services.AddSingleton<IPasswordHasher, PasswordHasher>();
+                    services.AddSingleton<IToDoViewModelFactory, ToDoViewModelFactory>();
+                    services.AddSingleton<HomeViewModel>(services => new HomeViewModel(
+                        ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
+                            services.GetRequiredService<IExchangeRateService>()),
+                            services.GetRequiredService<IAuthenticator>(),
+                            services.GetRequiredService<TaskSummaryViewModel>()
+                        ));
+                    services.AddSingleton<TaskSummaryViewModel>();
+                    services.AddSingleton<TodayViewModel>(services => new TodayViewModel(
+                        services.GetRequiredService<ITaskService>(),
+                        services.GetRequiredService<IAccountStore>(),
+                        services.GetRequiredService<TaskSummaryViewModel>(),
+                        services.GetRequiredService<MessageViewModel>()
+                        ));
+                    services.AddSingleton<SettingsViewModel>();
+                    services.AddSingleton<MessageViewModel>();
 
-            services.AddSingleton<IToDoViewModelFactory, ToDoViewModelFactory>();
-            services.AddSingleton<HomeViewModel>(services => new HomeViewModel(
-                ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
-                    services.GetRequiredService<IExchangeRateService>()),
-                    services.GetRequiredService<IAuthenticator>(),
-                    services.GetRequiredService<TaskSummaryViewModel>()
-                ));
-            services.AddSingleton<TaskSummaryViewModel>();
-            services.AddSingleton<TodayViewModel>(services => new TodayViewModel(
-                services.GetRequiredService<ITaskService>(),
-                services.GetRequiredService<IAccountStore>(),
-                services.GetRequiredService<TaskSummaryViewModel>(),
-                services.GetRequiredService<MessageViewModel>()
-                ));
-            services.AddSingleton<SettingsViewModel>();
-            services.AddSingleton<MessageViewModel>();
+                    services.AddSingleton<CreateViewModel<HomeViewModel>>(services =>
+                    {
+                        return () => services.GetRequiredService<HomeViewModel>();
+                    });
+                    services.AddSingleton<CreateViewModel<TodayViewModel>>(services =>
+                    {
+                        return () => services.GetRequiredService<TodayViewModel>();
+                    });
+                    services.AddSingleton<CreateViewModel<SettingsViewModel>>(services =>
+                    {
+                        return () => services.GetRequiredService<SettingsViewModel>();
+                    });
+                    services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>();
+                    services.AddSingleton<CreateViewModel<LoginViewModel>>(services =>
+                    {
+                        return () => new LoginViewModel(
+                            services.GetRequiredService<IAuthenticator>(),
+                            services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>(),
+                            services.GetRequiredService<MessageViewModel>());
+                    });
 
-            // HomeViewModel
-            services.AddSingleton<CreateViewModel<HomeViewModel>>(services =>
-            {
-                return () => services.GetRequiredService<HomeViewModel>();
-                //return () => new HomeViewModel(ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
-                //    services.GetRequiredService<IExchangeRateService>()));
-            });
-            // TodayViewModel
-            services.AddSingleton<CreateViewModel<TodayViewModel>>(services =>
-            {
-                return () => services.GetRequiredService<TodayViewModel>();
-            });
-            // SettingsViewModel
-            services.AddSingleton<CreateViewModel<SettingsViewModel>>(services =>
-            {
-                return () => services.GetRequiredService<SettingsViewModel>();
-            });
-            services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>();
-            // LoginViewModel
-            services.AddSingleton<CreateViewModel<LoginViewModel>>(services =>
-            {
-                return () => new LoginViewModel(
-                    services.GetRequiredService<IAuthenticator>(),
-                    services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>(),
-                    services.GetRequiredService<MessageViewModel>());
-            });
+                    services.AddSingleton<INavigator, Navigator>();
+                    services.AddSingleton<IAuthenticator, Authenticator>();
+                    services.AddSingleton<IAccountStore, AccountStore>();
+                    services.AddSingleton<TaskStore>();
+                    services.AddSingleton<ISettings, Settings>();
+                    services.AddSingleton<MainViewModel>();
 
-
-            //services.AddSingleton<ToDoViewModelFactory2<HomeViewModel>, HomeViewModelFactory>();
-            //services.AddSingleton<ToDoViewModelFactory2<InboxViewModel>, InboxViewModelFactory>();
-            //services.AddSingleton<ToDoViewModelFactory2<ExchangeRateListingViewModel>, ExchangeRateServiceViewModelFactory>();
-            //services.AddSingleton<ToDoViewModelFactory2<LoginViewModel>>(
-            //    (services) =>
-            //        new LoginViewModelFactory(
-            //            services.GetRequiredService<IAuthenticator>(),
-            //            new ViewModelFactoryRenavigator<HomeViewModel>(
-            //                services.GetRequiredService<INavigator>(),
-            //                services.GetRequiredService<ToDoViewModelFactory2<HomeViewModel>>()))
-            //);
-            //services.AddSingleton<ToDoViewModelFactory2<SettingsViewModel>, SettingsViewModelFactory>();
-
-            services.AddSingleton<INavigator, Navigator>();
-            services.AddSingleton<IAuthenticator, Authenticator>();
-            services.AddSingleton<IAccountStore, AccountStore>();
-            services.AddSingleton<TaskStore>();
-            services.AddSingleton<ISettings, Settings>();
-            services.AddSingleton<MainViewModel>();
-
-            services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
-
-            return services.BuildServiceProvider();
+                    services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
+                });
+        }
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            await _host.StopAsync();
+            _host.Dispose();
+            base.OnExit(e);
+        }
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            _host.Start();
+            Window window = _host.Services.GetRequiredService<MainWindow>();
+            window.Show();
+            base.OnStartup(e);
         }
     }
 }
