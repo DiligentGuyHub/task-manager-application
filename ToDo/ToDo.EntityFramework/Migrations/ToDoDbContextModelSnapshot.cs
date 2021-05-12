@@ -89,7 +89,7 @@ namespace ToDo.EntityFramework.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Deadline")
+                    b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")

@@ -29,13 +29,19 @@ namespace ToDo.WPF.ViewModels
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
-        public ICommand UpdateAccountCommand { get; set; }
-        public AccountViewModel(IAccountStore accountStore, IAccountService accountService)
+        public ICommand UpdateAccountCommand { get; }
+        public MessageViewModel ResultMessageViewModel { get; }
+
+        public string ResultMessage { set => ResultMessageViewModel.Message = value; }
+
+        public AccountViewModel(IAccountStore accountStore, IAccountService accountService, MessageViewModel resultMessageViewModel)
         {
             _accountStore = accountStore;
             CurrentUser = accountStore.CurrentAccount;
             _accountService = accountService;
             UpdateAccountCommand = new UpdateAccountCommand(this, accountService);
+            ResultMessageViewModel = resultMessageViewModel;
+            ResultMessage = string.Empty;
         }
     }
 }

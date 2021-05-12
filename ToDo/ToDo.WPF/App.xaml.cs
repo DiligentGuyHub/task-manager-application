@@ -97,7 +97,8 @@ namespace ToDo.WPF
                     {
                         return () => new AccountViewModel(
                             services.GetRequiredService<IAccountStore>(),
-                            services.GetRequiredService<IAccountService>());
+                            services.GetRequiredService<IAccountService>(),
+                            services.GetRequiredService<MessageViewModel>());
                     });
 
 

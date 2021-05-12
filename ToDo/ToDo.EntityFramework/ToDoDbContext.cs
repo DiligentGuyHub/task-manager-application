@@ -11,7 +11,6 @@ namespace ToDo.EntityFramework
     public class ToDoDbContext : DbContext
     {
         public ToDoDbContext(DbContextOptions options) : base(options) { }
-
         public DbSet<Domain.Models.User> Users { get; set; }
         public DbSet<Domain.Models.Task> Tasks { get; set; }
         //public DbSet<Domain.Models.Category> Categories { get; set; }

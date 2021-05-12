@@ -363,9 +363,7 @@ C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\appsettings.json
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\Humanizer.dll
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\InboxView.g.cs
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\RegisterView.g.cs
-C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\InboxView.baml
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\RegisterView.baml
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\PasswordBoxMVVM.dll
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\AccountView.g.cs

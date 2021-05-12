@@ -15,8 +15,6 @@ namespace ToDo.WPF.Commands
         private ITaskService _taskService;
         private IAccountStore _accountStore;
         private TodayViewModel _todayViewModel;
-
-
         public DeleteTaskCommand(TodayViewModel todayViewModel, ITaskService taskService, IAccountStore accountStore)
         {
             _todayViewModel = todayViewModel;
