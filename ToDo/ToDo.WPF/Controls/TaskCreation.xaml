@@ -11,6 +11,12 @@
     d:DesignHeight="35"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.InputBindings>
+        <KeyBinding
+            Key="Enter"
+            Command="{Binding CreateTaskCommand}"
+            CommandParameter="{Binding SelectedTask}" />
+    </UserControl.InputBindings>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -37,7 +43,6 @@
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="35" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
@@ -96,13 +101,13 @@
                     </ComboBox>
                     <!--<Image Width="25" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resources/Gifs/alarm-clock-1.gif"/>-->
                 </Grid>
-                <Button
+                <!--<Button
                     Grid.Column="1"
                     BorderBrush="Transparent"
                     Command="{Binding CreateTaskCommand}"
                     CommandParameter="{Binding SelectedTask}"
                     IsDefault="True"
-                    Tag="" />
+                    Tag="" />-->
             </Grid>
         </Border>
 

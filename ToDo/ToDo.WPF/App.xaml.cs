@@ -63,6 +63,7 @@ namespace ToDo.WPF
 
                     services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
+                    services.AddSingleton<AccountViewModel>();
                     services.AddSingleton<IToDoViewModelFactory, ToDoViewModelFactory>();
                     services.AddSingleton<HomeViewModel>(services => new HomeViewModel(
                         ExchangeRateListingViewModel.LoadExchangeIndexViewModel(
@@ -92,6 +93,13 @@ namespace ToDo.WPF
                     {
                         return () => services.GetRequiredService<SettingsViewModel>();
                     });
+                    services.AddSingleton<CreateViewModel<AccountViewModel>>(services =>
+                    {
+                        return () => new AccountViewModel(
+                            services.GetRequiredService<IAccountStore>(),
+                            services.GetRequiredService<IAccountService>());
+                    });
+
 
                     services.AddSingleton<ViewModelDelegateRenavigator<LoginViewModel>>();
                     services.AddSingleton<CreateViewModel<RegisterViewModel>>(services =>

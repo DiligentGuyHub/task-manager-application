@@ -24,10 +24,5 @@ namespace ToDo.WPF.Controls
         {
             InitializeComponent();
         }
-
-        private void ComboBox_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

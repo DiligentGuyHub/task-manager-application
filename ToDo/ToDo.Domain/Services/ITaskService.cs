@@ -10,5 +10,6 @@ namespace ToDo.Domain.Services
     public interface ITaskService
     {
         Task<User> CreateTask(User account, string header, string category, string priority);
+        Task<User> UpdateTask(User account);
     }
 }

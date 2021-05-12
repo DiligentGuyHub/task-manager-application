@@ -107,7 +107,6 @@ namespace ToDo.WPF.ViewModels
         // PROPERTIES END
 
         public ICommand CreateTaskCommand { get; set; }
-
         public TodayViewModel(ITaskService taskService, IAccountStore accountStore, TaskSummaryViewModel taskViewModel, MessageViewModel errorMessageViewModel)
         {
             CreateTaskCommand = new CreateTaskCommand(this, taskService, accountStore);

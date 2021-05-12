@@ -28,28 +28,13 @@ namespace ToDo.WPF.Commands
         }
         public override async System.Threading.Tasks.Task ExecuteAsync(object parameter)
         {
+            _todayViewModel.ErrorMessage = string.Empty;
+
             try
             {
+                User user = await _taskService.CreateTask(_accountStore.CurrentAccount, _todayViewModel.Task, _todayViewModel.Category, _todayViewModel.Priority);
                 
-                    //ToDo.Domain.Models.Task task = await _taskService.Create(new ToDo.Domain.Models.Task
-                    //{
-                    //    UserId = _accountStore.CurrentAccount.Id,
-                    //    Header = _todayViewModel.Task,
-                    //    Priority = _todayViewModel.Priority,
-                    //    Category = _todayViewModel.Category,
-                    //    Description = "",
-                    //    Deadline = DateTime.Now,
-                    //    isCompleted = false,
-                    //    Images = null,
-                    //    Files = null,
-                    //    Subtasks = null
-                    //});
-                    //// ???
-                    //_accountStore.CurrentAccount.Tasks.Append(task);
-                    User user = await _taskService.CreateTask(_accountStore.CurrentAccount, _todayViewModel.Task, _todayViewModel.Category, _todayViewModel.Priority);
-
-                    _accountStore.CurrentAccount = user;
-                    _todayViewModel.ErrorMessage = "";
+                _accountStore.CurrentAccount = user;
             }
             catch (Exception)
             {

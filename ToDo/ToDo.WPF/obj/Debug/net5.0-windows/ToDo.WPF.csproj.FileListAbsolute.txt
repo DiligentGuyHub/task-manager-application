@@ -368,3 +368,5 @@ C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\InboxView.baml
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\RegisterView.baml
 C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\bin\Debug\net5.0-windows\PasswordBoxMVVM.dll
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\AccountView.g.cs
+C:\Users\longr\OneDrive\Documents\C#\WPF\ToDo\ToDo.WPF\obj\Debug\net5.0-windows\Views\AccountView.baml

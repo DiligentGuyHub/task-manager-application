@@ -13,22 +13,27 @@ namespace ToDo.WPF.ViewModels.Factories
         private readonly CreateViewModel<TodayViewModel> _createTodayViewModel;
         private readonly CreateViewModel<LoginViewModel> _createLoginViewModel;
         private readonly CreateViewModel<SettingsViewModel> _createSettingsViewModel;
+        private readonly CreateViewModel<AccountViewModel> _createAccountViewModel;
 
         public ToDoViewModelFactory(CreateViewModel<HomeViewModel> createHomeViewModel,
                                     CreateViewModel<LoginViewModel> createLoginViewModel,
-                                    CreateViewModel<SettingsViewModel> createSettingsViewModel, 
-                                    CreateViewModel<TodayViewModel> createTodayViewModel)
+                                    CreateViewModel<SettingsViewModel> createSettingsViewModel,
+                                    CreateViewModel<TodayViewModel> createTodayViewModel, 
+                                    CreateViewModel<AccountViewModel> createAccountViewModel)
         {
             _createHomeViewModel = createHomeViewModel;
             _createLoginViewModel = createLoginViewModel;
             _createSettingsViewModel = createSettingsViewModel;
             _createTodayViewModel = createTodayViewModel;
+            _createAccountViewModel = createAccountViewModel;
         }
 
         public ViewModelBase CreateViewModel(ViewType viewType)
         {
             switch (viewType)
             {
+                case ViewType.Account:
+                    return _createAccountViewModel();
                 case ViewType.Login:
                     return _createLoginViewModel();
                 case ViewType.Settings:

@@ -13,6 +13,7 @@ namespace ToDo.WPF.State.Navigators
     {
         Login,
         Register,
+        Account,
         Settings,
         Home,
         Inbox,
