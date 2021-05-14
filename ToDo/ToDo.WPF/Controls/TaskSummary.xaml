@@ -79,7 +79,7 @@
                             <CheckBox
                                 Grid.Column="0"
                                 VerticalContentAlignment="Top"
-                                IsChecked="{Binding IsCompleted}">
+                                IsChecked="{Binding IsCompleted, UpdateSourceTrigger=PropertyChanged}">
                                 <CheckBox.LayoutTransform>
                                     <ScaleTransform ScaleX="2" ScaleY="2" />
                                 </CheckBox.LayoutTransform>
@@ -96,7 +96,7 @@
                                     BorderThickness="0"
                                     FontSize="18"
                                     FontWeight="SemiBold"
-                                    Text="{Binding Header}"
+                                    Text="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                     TextWrapping="Wrap" />
                                 <TextBox
                                     Grid.Row="1"
@@ -104,19 +104,19 @@
                                     Background="Transparent"
                                     BorderThickness="0"
                                     FontSize="12"
-                                    Text="{Binding Description}"
+                                    Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     TextWrapping="Wrap" />
                             </Grid>
                             <Grid Width="120">
                                 <TextBlock
                                     VerticalAlignment="Top"
                                     FontSize="18"
-                                    Text="{Binding Category}" />
+                                    Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" />
                             </Grid>
                             <Grid Width="120">
                                 <Menu VerticalAlignment="Top" Background="Transparent">
-                                    <MenuItem Header="{Binding Deadline}">
-                                        <Calendar FirstDayOfWeek="Monday" SelectedDate="{Binding Deadline}" />
+                                    <MenuItem Header="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}">
+                                        <Calendar FirstDayOfWeek="Monday" SelectedDate="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}" />
                                     </MenuItem>
                                 </Menu>
                             </Grid>
