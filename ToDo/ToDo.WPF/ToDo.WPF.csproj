@@ -87,10 +87,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Account\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

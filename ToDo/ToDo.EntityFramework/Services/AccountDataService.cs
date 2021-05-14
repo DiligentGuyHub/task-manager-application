@@ -20,7 +20,6 @@ namespace ToDo.EntityFramework.Services
             _contextFactory = contextFactory;
             _nonQueryDataService = new NonQueryDataService<User>(contextFactory);
         }
-        // излишне
         public async Task<User> Create(User entity)
         {
             return await _nonQueryDataService.Create(entity);

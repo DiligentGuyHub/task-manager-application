@@ -11,97 +11,94 @@ namespace ToDo.EntityFramework.Services.Common
 {
     public class TaskDataService : ITaskService
     {
-        private readonly IDataService<User> _accountService;
+        private readonly ToDoDbContextFactory _contextFactory;
+        private readonly NonQueryDataService<Domain.Models.Task> _nonQueryDataService;
 
-        public TaskDataService(IDataService<User> accountService)
+        public TaskDataService(ToDoDbContextFactory contextFactory)
         {
-            _accountService = accountService;
+            _contextFactory = contextFactory;
+            _nonQueryDataService = new NonQueryDataService<Domain.Models.Task>(contextFactory);
+        }
+
+        public async Task<Domain.Models.Task> Create(Domain.Models.Task entity)
+        {
+            return await _nonQueryDataService.Create(entity);
+        }
+        public async Task<bool> Delete(int id)
+        {
+            return await _nonQueryDataService.Delete(id);
+        }
+        public async Task<Domain.Models.Task> Update(int id, Domain.Models.Task entity)
+        {
+            return await _nonQueryDataService.Update(id, entity);
+        }
+        public async Task<Domain.Models.Task> Get(int id)
+        {
+            using (ToDoDbContext context = _contextFactory.CreateDbContext())
+            {
+                // include tasks
+                Domain.Models.Task entity = await context.Tasks
+                    .Include(a => a.Subtasks)
+                    .Include(a => a.Images)
+                    .Include(a => a.Files)
+                    .FirstOrDefaultAsync((entity) => entity.Id == id);
+                return entity;
+            }
+        }
+
+        public async Task<IEnumerable<Domain.Models.Task>> GetAll()
+        {
+            using (ToDoDbContext context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<Domain.Models.Task> entities = await context.Tasks
+                    .Include(a => a.Subtasks)
+                    .Include(a => a.Images)
+                    .Include(a => a.Files)
+                    .ToListAsync();
+                return entities;
+            }
         }
 
         public async Task<User> CreateTask(User account, string header, string category, string priority)
         {
-            if (!string.IsNullOrEmpty(header) &&
-                !string.IsNullOrEmpty(category) &&
-                !string.IsNullOrEmpty(priority))
-            {
-                Domain.Models.Task task = new Domain.Models.Task()
-                {
-                    Account = account,
-                    Header = header,
-                    Category = category,
-                    Priority = priority,
-                    Description = "",
-                    Deadline = DateTime.Now,
-                    isCompleted = false,
-                    Images = null,
-                    Files = null,
-                    Subtasks = null
-                };
-            
-
-            account.Tasks.Add(task);
-            }
-            await _accountService.Update(account.Id, account);
-            return account;
+            throw new NotImplementedException();
         }
+
         public async Task<User> UpdateTask(User account)
         {
-            await _accountService.Update(account.Id, account);
-            return account;
+            throw new NotImplementedException();
         }
 
-        //private readonly ToDoDbContextFactory _contextFactory;
-        //private readonly NonQueryDataService<ToDo.Domain.Models.Task> _nonQueryDataService;
-        //public TaskDataService(ToDoDbContextFactory contextFactory)
+        //public async Task<User> CreateTask(User account, string header, string category, string priority)
         //{
-        //    _contextFactory = contextFactory;
-        //    _nonQueryDataService = new NonQueryDataService<ToDo.Domain.Models.Task>(contextFactory);
-        //}
-
-        //public async Task<ToDo.Domain.Models.Task> Create(ToDo.Domain.Models.Task entity)
-        //{
-        //    return await _nonQueryDataService.Create(entity);
-        //}
-
-        //public async Task<bool> Delete(int id)
-        //{
-        //    return await _nonQueryDataService.Delete(id);
-        //}
-        //public async Task<ToDo.Domain.Models.Task> Update(int id, ToDo.Domain.Models.Task entity)
-        //{
-        //    return await _nonQueryDataService.Update(id, entity);
-        //}
-
-        //public async Task<ToDo.Domain.Models.Task> Get(int id)
-        //{
-        //    using (ToDoDbContext context = _contextFactory.CreateDbContext())
+        //    if (!string.IsNullOrEmpty(header) &&
+        //        !string.IsNullOrEmpty(category) &&
+        //        !string.IsNullOrEmpty(priority))
         //    {
-        //        // include tasks
-        //        ToDo.Domain.Models.Task entity = await context.Tasks
-        //            .Include(a => a.Account)
-        //            .Include(a => a.Images)
-        //            .Include(a => a.Files)
-        //            .Include(a => a.Category)
-        //            .Include(a => a.Subtasks)
-        //            .FirstOrDefaultAsync((entity) => entity.Id == id);
-        //        return entity;
-        //    }
-        //}
+        //        Domain.Models.Task task = new Domain.Models.Task()
+        //        {
+        //            Account = account,
+        //            Header = header,
+        //            Category = category,
+        //            Priority = priority,
+        //            Description = "",
+        //            Deadline = DateTime.Now,
+        //            isCompleted = false,
+        //            Images = null,
+        //            Files = null,
+        //            Subtasks = null
+        //        };
 
-        //public async Task<IEnumerable<ToDo.Domain.Models.Task>> GetAll()
+
+        //        account.Tasks.Add(task);
+        //    }
+        //    await _accountService.Update(account.Id, account);
+        //    return account;
+        //}
+        //public async Task<User> UpdateTask(User account)
         //{
-        //    using (ToDoDbContext context = _contextFactory.CreateDbContext())
-        //    {
-        //        IEnumerable<ToDo.Domain.Models.Task> entities = await context.Tasks
-        //            .Include(a => a.Account)
-        //            .Include(a => a.Images)
-        //            .Include(a => a.Files)
-        //            .Include(a => a.Category)
-        //            .Include(a => a.Subtasks)
-        //            .ToListAsync();
-        //        return entities;
-        //    }
+        //    await _accountService.Update(account.Id, account);
+        //    return account;
         //}
-
     }
 }

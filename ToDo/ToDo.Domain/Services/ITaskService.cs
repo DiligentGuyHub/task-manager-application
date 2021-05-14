@@ -7,7 +7,7 @@ using ToDo.Domain.Models;
 
 namespace ToDo.Domain.Services
 {
-    public interface ITaskService
+    public interface ITaskService : IDataService<Domain.Models.Task>
     {
         Task<User> CreateTask(User account, string header, string category, string priority);
         Task<User> UpdateTask(User account);

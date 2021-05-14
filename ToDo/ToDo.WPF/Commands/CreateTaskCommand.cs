@@ -29,14 +29,25 @@ namespace ToDo.WPF.Commands
         public override async System.Threading.Tasks.Task ExecuteAsync(object parameter)
         {
             _todayViewModel.ErrorMessage = string.Empty;
-
+            Domain.Models.Task task = new Domain.Models.Task()
+            {
+                Account = _accountStore.CurrentAccount,
+                Header = _todayViewModel.Task,
+                Category = _todayViewModel.Category,
+                Priority = _todayViewModel.Priority,
+                Description = "",
+                Deadline = DateTime.Now,
+                isCompleted = false,
+                Images = null,
+                Files = null,
+                Subtasks = null
+            };
+            _accountStore.CurrentAccount.Tasks.Add(task);
             try
             {
-                User user = await _taskService.CreateTask(_accountStore.CurrentAccount, _todayViewModel.Task, _todayViewModel.Category, _todayViewModel.Priority);
-                
-                _accountStore.CurrentAccount = user;
+               
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _todayViewModel.ErrorMessage = "All fields must be specified to create a task";
             }
